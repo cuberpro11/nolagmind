@@ -1,0 +1,106 @@
+---
+import { faq } from '../data/faq';
+---
+
+<section class="faq section hairline-top" id="faq">
+  <div class="container faq__grid">
+    <div data-reveal>
+      <p class="tick-label"><span class="tick-accent">[faq]</span> quick answers</p>
+      <h2 class="display faq__title">Questions,<br />answered fast.</h2>
+      <p class="faq__lede">Anything else? The Discord is friendly and quick.</p>
+    </div>
+
+    <div class="faq__list" data-reveal style="--reveal-delay: 100ms">
+      {
+        faq.map((item) => (
+          <details class="faq__item">
+            <summary>
+              {item.q}
+              <span class="faq__plus" aria-hidden="true">+</span>
+            </summary>
+            <p set:html={item.a} />
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .faq__title {
+    margin-top: 1.1rem;
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  }
+
+  .faq__lede {
+    margin-top: 1rem;
+    color: var(--text-2);
+    font-size: 0.95rem;
+  }
+
+  .faq__list {
+    display: grid;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq__item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 0.2rem;
+    font-weight: 570;
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary:hover {
+    color: var(--accent-text);
+  }
+
+  .faq__plus {
+    font-family: var(--font-mono);
+    color: var(--muted);
+    transition: transform 200ms var(--ease-out);
+  }
+
+  .faq__item[open] .faq__plus {
+    transform: rotate(45deg);
+  }
+
+  .faq__item p {
+    padding: 0 0.2rem 1.2rem;
+    color: var(--text-2);
+    font-size: 0.92rem;
+    max-width: 46em;
+    text-wrap: pretty;
+  }
+
+  .faq__item :global(strong) {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  @media (max-width: 880px) {
+    .faq__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+</style>

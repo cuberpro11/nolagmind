@@ -1,0 +1,103 @@
+---
+// Local-first / ownership section.
+---
+
+<section class="local section hairline-top">
+  <div class="container local__grid">
+    <div data-reveal>
+      <p class="tick-label">
+        <span class="tick-accent">[07]</span> yours, on your disk
+      </p>
+      <h2 class="display local__title">
+        Your notes are files.<br />Not rows in our database.
+      </h2>
+      <p class="local__body">
+        Every note is a plain markdown file inside a folder we call a vault —
+        on your machine, readable by any app, backed up however you like.
+        There's no account to create, no server between you and your thoughts,
+        and no exit interview if you ever leave.
+      </p>
+      <ul class="local__points">
+        <li>Plain <strong>markdown</strong> — open it anywhere, forever</li>
+        <li>Separate <strong>vaults</strong> for work, life, and projects</li>
+        <li><strong>No account</strong>, no telemetry-driven upsells</li>
+        <li>Works entirely <strong>offline</strong></li>
+      </ul>
+    </div>
+
+    <div class="local__tree window" data-reveal style="--reveal-delay: 120ms">
+      <div class="window__bar">
+        <div class="window__dots"><span></span><span></span><span></span></div>
+        <div class="window__title">~/notes</div>
+      </div>
+      <pre class="local__pre" aria-label="Example vault folder structure">▾ personal vault/
+  ▾ daily/
+      2026-07-14.md
+      2026-07-15.md
+    ideas.md
+    project log.md
+    reading list.md
+▸ work vault/
+▸ research vault/</pre>
+    </div>
+  </div>
+</section>
+
+<style>
+  .local__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .local__title {
+    margin-top: 1.1rem;
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  }
+
+  .local__body {
+    margin-top: 1.1rem;
+    color: var(--text-2);
+    max-width: 32em;
+    text-wrap: pretty;
+  }
+
+  .local__points {
+    margin: 1.4rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-2);
+  }
+
+  .local__points li::before {
+    content: '·';
+    color: var(--accent-text);
+    font-weight: 700;
+    margin-right: 0.6em;
+  }
+
+  .local__points strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .local__pre {
+    margin: 0;
+    padding: 1.4rem 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    line-height: 1.9;
+    color: var(--text-2);
+    overflow-x: auto;
+  }
+
+  @media (max-width: 880px) {
+    .local__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

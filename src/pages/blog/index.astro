@@ -1,0 +1,91 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../../data/site';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Base title={`Blog — ${site.name}`} description="Notes on programming, keyboard optimization, learning systems, and building a note app.">
+  <section class="log section">
+    <div class="container log__inner">
+      <p class="tick-label" data-reveal>
+        <span class="tick-accent">[blog]</span> notes along the way
+      </p>
+      <h1 class="display log__title" data-reveal style="--reveal-delay: 60ms">
+        Writing.
+      </h1>
+      <p class="log__sub" data-reveal style="--reveal-delay: 110ms">
+        Practical thoughts on programming, keyboard-driven workflows, and
+        building a note app from scratch.
+      </p>
+
+      <div class="log__timeline">
+        {
+          posts.map((post, i) => (
+            <article class="log__release" data-reveal style={`--reveal-delay: ${Math.min(i * 60, 240)}ms`}>
+              <a href={`/blog/${post.id}`} class="log__post-link">
+                <h2 class="log__post-title">{post.data.title}</h2>
+                <p class="log__excerpt">{post.data.excerpt}</p>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .log__inner {
+    max-width: 60rem;
+  }
+
+  .log__title {
+    margin-top: 1.2rem;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+  }
+
+  .log__sub {
+    margin-top: 1.2rem;
+    color: var(--text-2);
+    max-width: 44em;
+  }
+
+  .log__timeline {
+    margin-top: 3rem;
+    display: grid;
+    gap: 0;
+  }
+
+  .log__release {
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .log__post-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .log__post-link:hover .log__post-title {
+    color: var(--accent-text);
+  }
+
+  .log__post-title {
+    font-size: 1.1rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+    transition: color 130ms var(--ease-out);
+  }
+
+  .log__excerpt {
+    margin-top: 0.5rem;
+    color: var(--text-2);
+    font-size: 0.94rem;
+    max-width: 50em;
+  }
+</style>

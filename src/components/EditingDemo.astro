@@ -1,0 +1,153 @@
+---
+// WYSIWYG markdown demo: syntax becomes formatting the instant it's typed.
+---
+
+<div class="window" id="edit-demo">
+  <div class="window__bar">
+    <div class="window__dots"><span></span><span></span><span></span></div>
+    <div class="window__title">the review.md — no lag mind</div>
+  </div>
+  <div class="edit__page demo-page" id="edit-page"></div>
+  <div class="edit__status">
+    <span>autosaved</span>
+    <span>0 spinners</span>
+    <span id="edit-words">0 words</span>
+  </div>
+</div>
+
+<style>
+  .edit__page {
+    padding: 1.4rem 1.6rem;
+    min-height: 13rem;
+  }
+
+  .edit__page :global(.quote) {
+    padding-left: 0.9em;
+    border-left: 3px solid var(--accent);
+    color: var(--text-2);
+    font-style: italic;
+  }
+
+  .edit__page :global(.code) {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.08em 0.4em;
+  }
+
+  .edit__page :global(.num) {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    margin-right: 0.5em;
+  }
+
+  .edit__status {
+    display: flex;
+    gap: 1.4rem;
+    padding: 0.55rem 1.1rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .edit__status span:last-child {
+    margin-left: auto;
+  }
+</style>
+
+<script>
+  import { prefersReducedMotion, sleep, createSurface, runLoop } from '../scripts/demo';
+
+  const page = document.getElementById('edit-page')!;
+  const words = document.getElementById('edit-words')!;
+  const { clear, newLine, caretTo, typeIn } = createSurface(page);
+
+  let count = 0;
+
+  async function run() {
+    clear();
+    count = 0;
+    words.textContent = '0 words';
+    await sleep(500);
+
+    const h = newLine();
+    caretTo(h);
+    const rawH = await typeIn(h, 'raw', '## ');
+    h.classList.add('l-h2');
+    rawH.remove();
+    caretTo(h);
+    await typeIn(h, '', 'The review');
+    count = 2;
+    words.textContent = '2 words';
+    await sleep(280);
+
+    const q = newLine();
+    caretTo(q);
+    const rawQ = await typeIn(q, 'raw', '> ');
+    q.classList.add('quote');
+    rawQ.remove();
+    caretTo(q);
+    await typeIn(q, '', 'ship early, ship native.');
+    count = 6;
+    words.textContent = '6 words';
+    await sleep(320);
+
+    const p = newLine();
+    caretTo(p);
+    await typeIn(p, '', 'Every ');
+    const rawI1 = await typeIn(p, 'raw', '*');
+    const it = await typeIn(p, '', 'single');
+    const rawI2 = await typeIn(p, 'raw', '*');
+    rawI1.remove();
+    rawI2.remove();
+    it.className = 'i';
+    caretTo(p);
+    await typeIn(p, '', ' keystroke renders in ');
+    const rawC1 = await typeIn(p, 'raw', '`');
+    const code = await typeIn(p, '', '<16ms');
+    const rawC2 = await typeIn(p, 'raw', '`');
+    rawC1.remove();
+    rawC2.remove();
+    code.className = 'code';
+    caretTo(p);
+    await typeIn(p, '', '.');
+    count = 12;
+    words.textContent = '12 words';
+    await sleep(340);
+
+    for (const [i, text] of ['no loading bars', 'no sync dialogs', 'no waiting'].entries()) {
+      const l = newLine();
+      caretTo(l);
+      const raw = await typeIn(l, 'raw', `${i + 1}. `);
+      raw.remove();
+      const num = document.createElement('span');
+      num.className = 'num';
+      num.textContent = `${i + 1}.`;
+      l.prepend(num);
+      caretTo(l);
+      await typeIn(l, '', text);
+      count += text.split(' ').length;
+      words.textContent = `${count} words`;
+      await sleep(160);
+    }
+
+    await sleep(4200);
+  }
+
+  if (prefersReducedMotion()) {
+    page.innerHTML = `
+      <div class="l l-h2">The review</div>
+      <div class="l quote">ship early, ship native.</div>
+      <div class="l">Every <span class="i">single</span> keystroke renders in <span class="code">&lt;16ms</span>.</div>
+      <div class="l"><span class="num">1.</span>no loading bars</div>
+      <div class="l"><span class="num">2.</span>no sync dialogs</div>
+      <div class="l"><span class="num">3.</span>no waiting</div>`;
+    words.textContent = '21 words';
+  } else {
+    runLoop(page, run);
+  }
+</script>

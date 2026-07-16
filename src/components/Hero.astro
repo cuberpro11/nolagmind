@@ -1,0 +1,269 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <p class="tick-label" data-reveal>
+      <span class="tick-accent">[v{site.version}]</span> native · local-first · free
+    </p>
+
+    <h1 class="display hero__title" data-reveal style="--reveal-delay: 60ms">
+      Notes at the<br />speed of thought<span class="hero__dot">.</span>
+    </h1>
+
+    <p class="hero__sub prose-max" data-reveal style="--reveal-delay: 120ms">
+      No Lag Mind is a native note app with zero lag between your keys and the
+      screen. Link ideas, command your notes, and never wait for a spinner again.
+    </p>
+
+    <div class="hero__cta" data-reveal style="--reveal-delay: 180ms">
+      <a href={site.downloadUrl} class="keycap keycap--accent js-download" download>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"></path>
+        </svg>
+        Download for macOS
+      </a>
+      <a href="/download" class="keycap">other platforms</a>
+    </div>
+
+    <p class="hero__fine" data-reveal style="--reveal-delay: 220ms">
+      free · {site.downloadPlatform} · no account needed
+    </p>
+
+    <div class="hero__demo" data-reveal style="--reveal-delay: 280ms">
+      <div class="window" id="hero-window">
+        <div class="window__bar">
+          <div class="window__dots"><span></span><span></span><span></span></div>
+          <div class="window__title">ideas.md — no lag mind</div>
+        </div>
+        <div class="hero-editor">
+          <aside class="hero-editor__side" aria-hidden="true">
+            <p class="hero-editor__vault">▾ personal vault</p>
+            <p class="hero-editor__file is-active">ideas.md</p>
+            <p class="hero-editor__file">reading list.md</p>
+            <p class="hero-editor__file">project log.md</p>
+            <p class="hero-editor__file">daily / 2026-07-15.md</p>
+          </aside>
+          <div
+            class="hero-editor__page demo-page"
+            id="hero-page"
+            aria-label="Editor demo: text appears instantly as it is typed"
+          >
+          </div>
+        </div>
+      </div>
+      <p class="hero__caption tick-label">
+        every keystroke lands on the same frame it was pressed
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(4rem, 9vw, 7.5rem) clamp(3rem, 6vw, 5rem);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* faint dot-grid halo behind the hero, fading out */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 40%;
+    background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 90% at 50% 0%, black 30%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__title {
+    margin-top: 1.4rem;
+    font-size: clamp(2.7rem, 7.5vw, 5.2rem);
+  }
+
+  .hero__dot {
+    color: var(--accent);
+  }
+
+  .hero__sub {
+    margin-top: 1.5rem;
+    font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+    color: var(--text-2);
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 0.9rem;
+    margin-top: 2.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero__fine {
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  .hero__demo {
+    width: min(54rem, 100%);
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .hero__caption {
+    margin-top: 1rem;
+  }
+
+  .hero-editor {
+    display: grid;
+    grid-template-columns: 12.5rem 1fr;
+    min-height: 21rem;
+    text-align: left;
+  }
+
+  .hero-editor__side {
+    padding: 1rem 0.9rem;
+    border-right: 1px solid var(--border);
+    background: var(--surface-2);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--text-2);
+  }
+
+  .hero-editor__vault {
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-editor__file {
+    padding: 0.28rem 0.5rem;
+    border-radius: 0.4rem;
+  }
+
+  .hero-editor__file.is-active {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+
+  .hero-editor__page {
+    padding: 1.6rem 2rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 720px) {
+    .hero-editor {
+      grid-template-columns: 1fr;
+      min-height: 17rem;
+    }
+
+    .hero-editor__side {
+      display: none;
+    }
+
+    .hero-editor__page {
+      padding: 1.2rem 1.2rem;
+      font-size: 0.88rem;
+    }
+  }
+
+  /* typed-content styles are shared via .demo-page in global.css */
+</style>
+
+<script>
+  import { prefersReducedMotion, sleep, typeText, createSurface, runLoop } from '../scripts/demo';
+
+  const page = document.getElementById('hero-page')!;
+  const { clear, newLine, span, caretTo, typeIn } = createSurface(page);
+
+  /** Type markdown syntax raw, then "transform" it the way the app does. */
+  async function heading(text: string) {
+    const l = newLine();
+    caretTo(l);
+    const raw = await typeIn(l, 'raw', '# ');
+    l.classList.add('l-h1');
+    raw.remove();
+    caretTo(l);
+    await typeIn(l, '', text);
+    return l;
+  }
+
+  async function task(text: string): Promise<HTMLElement> {
+    const l = newLine();
+    caretTo(l);
+    const raw = await typeIn(l, 'raw', '- [ ] ');
+    l.classList.add('task');
+    raw.remove();
+    const box = span(l, 'box');
+    box.textContent = '✓';
+    const t = span(l, 'task-text');
+    caretTo(l);
+    await typeText(t, text);
+    return l;
+  }
+
+  async function inlineMd(l: Element, open: string, close: string, cls: string, text: string) {
+    const rawOpen = await typeIn(l, 'raw', open);
+    const inner = await typeIn(l, '', text);
+    const rawClose = await typeIn(l, 'raw', close);
+    rawOpen.remove();
+    rawClose.remove();
+    inner.className = cls;
+    await sleep(80);
+  }
+
+  async function run() {
+    clear();
+    await sleep(500);
+
+    await heading('Ship the idea');
+    await sleep(260);
+
+    const p1 = newLine();
+    caretTo(p1);
+    await typeIn(p1, '', 'Ideas arrive faster than most apps can load. ');
+    await inlineMd(p1, '**', '**', 'b', 'Not this one.');
+    await sleep(300);
+
+    const p2 = newLine();
+    caretTo(p2);
+    await typeIn(p2, '', 'Link it to ');
+    await inlineMd(p2, '[[', ']]', 'wl', 'project log');
+    await typeIn(p2, '', ' and move on.');
+    await sleep(320);
+
+    const t1 = await task('capture everything');
+    await sleep(140);
+    const t2 = await task('lose nothing');
+    await sleep(600);
+
+    t1.classList.add('is-done');
+    await sleep(350);
+    t2.classList.add('is-done');
+    await sleep(3600);
+  }
+
+  if (prefersReducedMotion()) {
+    // Static final state, no animation.
+    page.innerHTML = `
+      <div class="l l-h1">Ship the idea</div>
+      <div class="l">Ideas arrive faster than most apps can load. <span class="b">Not this one.</span></div>
+      <div class="l">Link it to <span class="wl">project log</span> and move on.</div>
+      <div class="l task is-done"><span class="box">✓</span><span class="task-text">capture everything</span></div>
+      <div class="l task is-done"><span class="box">✓</span><span class="task-text">lose nothing</span></div>`;
+  } else {
+    runLoop(page, run);
+  }
+</script>

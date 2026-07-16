@@ -1,0 +1,120 @@
+---
+// [[wikilink]] autocomplete + backlinks panel demo.
+---
+
+<div class="window" id="wl-demo">
+  <div class="window__bar">
+    <div class="window__dots"><span></span><span></span><span></span></div>
+    <div class="window__title">project log.md — no lag mind</div>
+  </div>
+  <div class="wl__page demo-page" id="wl-page"></div>
+  <div class="wl__backlinks" id="wl-backlinks" hidden>
+    <p class="tick-label"><span class="tick-accent">↩</span> backlinks — project ideas</p>
+    <div id="wl-backlink-row"></div>
+  </div>
+</div>
+
+<style>
+  .wl__page {
+    padding: 1.4rem 1.6rem;
+    min-height: 9.5rem;
+  }
+
+  .wl__backlinks {
+    margin: 0 0.9rem 0.9rem;
+    padding: 0.8rem 0.9rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    animation: demo-pop 240ms var(--ease-out);
+  }
+
+  #wl-backlink-row {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-2);
+  }
+
+  #wl-backlink-row :global(.demo-row) {
+    padding-inline: 0;
+  }
+</style>
+
+<script>
+  import { prefersReducedMotion, sleep, createSurface, runLoop } from '../scripts/demo';
+
+  const page = document.getElementById('wl-page')!;
+  const backlinks = document.getElementById('wl-backlinks')!;
+  const backlinkRow = document.getElementById('wl-backlink-row')!;
+  const { clear, newLine, caretTo, typeIn } = createSurface(page);
+
+  const FINAL_ROW = `
+    <div class="demo-row">
+      <span class="snippet">project log.md — “Related: <span class="demo-hl">project ideas</span>, shipping notes”</span>
+    </div>`;
+
+  function menu(active: number): HTMLElement {
+    const items = ['project ideas', 'project log', 'project archive'];
+    const m = document.createElement('div');
+    m.className = 'demo-menu';
+    m.innerHTML = items
+      .map(
+        (t, i) =>
+          `<div class="demo-menu__item${i === active ? ' is-active' : ''}"><span>${t}</span><span class="hint">note</span></div>`
+      )
+      .join('');
+    return m;
+  }
+
+  async function run() {
+    clear();
+    backlinks.hidden = true;
+    backlinkRow.innerHTML = '';
+    await sleep(500);
+
+    const l1 = newLine();
+    caretTo(l1);
+    await typeIn(l1, '', 'Rebuild went live today.');
+    await sleep(250);
+
+    const l2 = newLine();
+    caretTo(l2);
+    await typeIn(l2, '', 'Related: ');
+    const raw = await typeIn(l2, 'raw', '[[');
+
+    // autocomplete opens the instant the brackets close
+    let m = menu(0);
+    page.appendChild(m);
+    await sleep(420);
+
+    await typeIn(l2, 'raw', 'pro', 42);
+    await sleep(500);
+
+    // enter — link completes, menu closes
+    m.remove();
+    l2.querySelectorAll('.raw').forEach((r) => r.remove());
+    const link = document.createElement('span');
+    link.className = 'wl';
+    link.textContent = 'project ideas';
+    l2.insertBefore(link, l2.querySelector('.caret'));
+    caretTo(l2);
+    await typeIn(l2, '', ', shipping notes');
+    await sleep(650);
+
+    // the linked note immediately knows about it
+    backlinks.hidden = false;
+    await sleep(220);
+    backlinkRow.innerHTML = FINAL_ROW;
+    await sleep(4200);
+  }
+
+  if (prefersReducedMotion()) {
+    page.innerHTML = `
+      <div class="l">Rebuild went live today.</div>
+      <div class="l">Related: <span class="wl">project ideas</span>, shipping notes</div>`;
+    backlinks.hidden = false;
+    backlinkRow.innerHTML = FINAL_ROW;
+  } else {
+    runLoop(page, run);
+  }
+</script>

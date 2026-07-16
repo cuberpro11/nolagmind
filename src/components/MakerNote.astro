@@ -1,0 +1,78 @@
+---
+// "A note from the maker" — honest voice instead of manufactured social proof.
+---
+
+<section class="maker section hairline-top">
+  <div class="container maker__inner">
+    <div class="window maker__window" data-reveal>
+      <div class="window__bar">
+        <div class="window__dots"><span></span><span></span><span></span></div>
+        <div class="window__title">why i built this.md — no lag mind</div>
+      </div>
+      <div class="maker__page demo-page">
+        <div class="l l-h1">Why I built this</div>
+        <p>
+          I kept losing thoughts to loading screens. The idea would be
+          <span class="i">right there</span> — and by the time the app caught up,
+          it was gone.
+        </p>
+        <p>
+          So I designed this note app from the ground up to work as fast as you
+          do: to be flexible, to <span class="b">work with you rather than against
+          you</span>, and to feel great out of the box while staying endlessly
+          tinkerable. For almost everything you can do, there are multiple ways
+          to do it — pick the one that fits your hands.
+        </p>
+        <p>
+          It's free, your notes stay on your disk, and it gets faster and
+          sharper with every release. I use it every day.
+        </p>
+        <p class="maker__sig">— h3t · <span class="maker__hnt">happy note-taking</span><span class="caret"></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .maker__inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .maker__window {
+    width: min(42rem, 100%);
+  }
+
+  .maker__page {
+    padding: 1.8rem 2.2rem 2rem;
+    font-size: 0.97rem;
+  }
+
+  .maker__page p {
+    margin-top: 0.9rem;
+    color: var(--text-2);
+    text-wrap: pretty;
+  }
+
+  .maker__page .b,
+  .maker__page .i {
+    color: var(--text);
+  }
+
+  .maker__sig {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    margin-top: 1.4rem !important;
+    color: var(--muted) !important;
+  }
+
+  .maker__hnt {
+    color: var(--accent-text);
+  }
+
+  @media (max-width: 560px) {
+    .maker__page {
+      padding: 1.3rem 1.3rem 1.5rem;
+    }
+  }
+</style>

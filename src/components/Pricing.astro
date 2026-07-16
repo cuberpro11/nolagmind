@@ -1,0 +1,229 @@
+---
+import { offerings } from '../data/pricing';
+import { site } from '../data/site';
+---
+
+<section class="pricing section hairline-top" id="pricing">
+  <div class="container">
+    <p class="tick-label" data-reveal>
+      <span class="tick-accent">[pricing]</span> simple, honestly
+    </p>
+    <h2 class="display pricing__title" data-reveal style="--reveal-delay: 60ms">
+      The app is free.<br />Actually free.
+    </h2>
+    <p class="pricing__lede prose-max" data-reveal style="--reveal-delay: 110ms">
+      No account, no trial that expires, no features held hostage. When you're
+      ready for more, these optional services and licenses are on the way —
+      they'll fund independent development, and they'll never be required.
+    </p>
+
+    <div class="pricing__free" data-reveal style="--reveal-delay: 150ms">
+      <div>
+        <h3>No Lag Mind Note App</h3>
+        <p>Everything you saw above. Every feature, every theme, forever.</p>
+      </div>
+      <div class="pricing__free-cta">
+        <span class="pricing__price">$0</span>
+        <a href={site.downloadUrl} class="keycap keycap--accent js-download" download>download</a>
+      </div>
+    </div>
+
+    <div class="pricing__grid">
+      {
+        offerings.map((o, i) => (
+          <div class="pricing__card" data-reveal style={`--reveal-delay: ${i * 70}ms`}>
+            <div class="pricing__card-head">
+              <h3>{o.name}</h3>
+              <span class="pricing__badge">coming soon</span>
+            </div>
+            <p class="pricing__kind tick-label">{o.kind === 'service' ? 'add-on service' : 'license'}</p>
+            <p class="pricing__summary">{o.summary}</p>
+            <ul>
+              {o.points.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+            <p class="pricing__tba">
+              <span class="pricing__price pricing__price--sm">{o.price}</span>
+              <span class="pricing__note">{o.priceNote}</span>
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="pricing__foot" data-reveal>
+      Want a say in what ships first? <a href={site.discordUrl} target="_blank" rel="noopener">Tell us on Discord →</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .pricing__title {
+    margin-top: 1.1rem;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+  }
+
+  .pricing__lede {
+    margin-top: 1.1rem;
+    color: var(--text-2);
+  }
+
+  .pricing__free {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding: 1.6rem 1.8rem;
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  .pricing__free h3 {
+    font-size: 1.15rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  .pricing__free p {
+    margin-top: 0.25rem;
+    color: var(--text-2);
+    font-size: 0.92rem;
+  }
+
+  .pricing__free-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .pricing__price {
+    font-size: 2rem;
+    font-weight: 680;
+    letter-spacing: -0.03em;
+  }
+
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .pricing__card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.4rem 1.4rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color 180ms;
+  }
+
+  .pricing__card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .pricing__card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+  }
+
+  .pricing__card h3 {
+    font-size: 1.05rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+  }
+
+  .pricing__badge {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    padding: 0.2em 0.6em;
+    border-radius: 99px;
+    border: 1px dashed var(--border-strong);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .pricing__kind {
+    margin-top: 0.5rem;
+    font-size: 0.68rem;
+  }
+
+  .pricing__summary {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    min-height: 3.2em;
+    text-wrap: pretty;
+  }
+
+  .pricing__card ul {
+    margin: 0.9rem 0 1.2rem;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.84rem;
+    color: var(--text-2);
+  }
+
+  .pricing__card li::before {
+    content: '✓';
+    color: var(--accent-text);
+    margin-right: 0.55em;
+    font-size: 0.85em;
+  }
+
+  .pricing__tba {
+    margin-top: auto;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .pricing__price--sm {
+    font-size: 1.25rem;
+  }
+
+  .pricing__note {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .pricing__foot {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+
+  .pricing__foot a {
+    color: var(--accent-text);
+  }
+
+  .pricing__foot a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1020px) {
+    .pricing__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .pricing__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

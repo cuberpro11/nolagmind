@@ -1,0 +1,142 @@
+---
+import Base from '../layouts/Base.astro';
+import { releases } from '../data/changelog';
+import { site } from '../data/site';
+---
+
+<Base title={`Changelog — ${site.name}`} description="What's new in the No Lag Mind Note App, release by release.">
+  <section class="log section">
+    <div class="container log__inner">
+      <p class="tick-label" data-reveal>
+        <span class="tick-accent">[changelog]</span> always shipping
+      </p>
+      <h1 class="display log__title" data-reveal style="--reveal-delay: 60ms">
+        What's new.
+      </h1>
+      <p class="log__sub" data-reveal style="--reveal-delay: 110ms">
+        The app updates itself — these notes appear right inside it after every
+        release. Here's the trail so far.
+      </p>
+
+      <div class="log__timeline">
+        {
+          releases.map((r, i) => (
+            <article class="log__release" data-reveal style={`--reveal-delay: ${Math.min(i * 60, 240)}ms`}>
+              <div class="log__version">
+                <span class="log__v">v{r.version}</span>
+                {i === 0 && <span class="log__latest">latest</span>}
+              </div>
+              <ul>
+                {r.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+
+      <p class="log__foot" data-reveal>
+        Running an older version? Open the app — it updates itself. Or
+        <a href="/download"> grab the latest here</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .log__inner {
+    max-width: 44rem;
+  }
+
+  .log__title {
+    margin-top: 1.2rem;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+  }
+
+  .log__sub {
+    margin-top: 1.2rem;
+    color: var(--text-2);
+    max-width: 34em;
+  }
+
+  .log__timeline {
+    margin-top: 3rem;
+    display: grid;
+    gap: 0;
+  }
+
+  .log__release {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1.5rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .log__version {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .log__v {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .log__latest {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    padding: 0.2em 0.6em;
+    border-radius: 99px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+
+  .log__release ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+    color: var(--text-2);
+    font-size: 0.94rem;
+  }
+
+  .log__release li::before {
+    content: '·';
+    color: var(--accent-text);
+    font-weight: 700;
+    margin-right: 0.6em;
+  }
+
+  .log__foot {
+    margin-top: 2.4rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+
+  .log__foot a {
+    color: var(--accent-text);
+  }
+
+  .log__foot a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 560px) {
+    .log__release {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+
+    .log__version {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+</style>

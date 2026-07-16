@@ -1,0 +1,74 @@
+---
+import { depthFeatures } from '../data/depth';
+---
+
+<section class="depth section hairline-top">
+  <div class="container">
+    <p class="tick-label" data-reveal>
+      <span class="tick-accent">[05]</span> and it goes deeper
+    </p>
+    <h2 class="display depth__title" data-reveal style="--reveal-delay: 60ms">
+      A full thinking environment,<br />not just a text box.
+    </h2>
+
+    <div class="depth__index">
+      {
+        depthFeatures.map((f, i) => (
+          <div class="depth__item" data-reveal style={`--reveal-delay: ${(i % 4) * 60}ms`}>
+            <span class="depth__num">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{f.name}</h3>
+              <p>{f.blurb}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .depth__title {
+    margin-top: 1.1rem;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+  }
+
+  .depth__index {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(2.5rem, 6vw, 5.5rem);
+    margin-top: 3.2rem;
+  }
+
+  .depth__item {
+    display: flex;
+    gap: 1.1rem;
+    padding-block: 1.05rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .depth__num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding-top: 0.3rem;
+  }
+
+  .depth__item h3 {
+    font-size: 0.98rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+  }
+
+  .depth__item p {
+    margin-top: 0.15rem;
+    font-size: 0.88rem;
+    color: var(--text-2);
+  }
+
+  @media (max-width: 720px) {
+    .depth__index {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

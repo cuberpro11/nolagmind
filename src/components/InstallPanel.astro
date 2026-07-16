@@ -1,0 +1,119 @@
+---
+// Shown after any .js-download click: first-launch instructions for the
+// unsigned app, plus the Discord link. One instance lives in Base.astro.
+import { site } from '../data/site';
+---
+
+<div class="install" id="install-panel" hidden role="dialog" aria-modal="false" aria-labelledby="install-title">
+  <div class="install__head">
+    <p class="tick-label"><span class="tick-accent">✓</span> downloading…</p>
+    <button type="button" class="install__close" id="install-close" aria-label="Dismiss">✕</button>
+  </div>
+  <h2 id="install-title">One step on first launch</h2>
+  <ol>
+    <li>Unzip and drag the app into <strong>Applications</strong>.</li>
+    <li><strong>Right-click</strong> the app → <strong>Open</strong> → confirm.</li>
+    <li>That's it — it opens normally from now on, and updates itself.</li>
+  </ol>
+  <p class="install__why">
+    macOS asks because the app isn't notarized with Apple yet. You only do this once.
+  </p>
+  <a href={site.discordUrl} target="_blank" rel="noopener" class="install__discord">
+    questions? join the discord →
+  </a>
+</div>
+
+<style>
+  .install {
+    position: fixed;
+    right: clamp(0.8rem, 3vw, 1.6rem);
+    bottom: clamp(0.8rem, 3vw, 1.6rem);
+    z-index: 90;
+    width: min(23rem, calc(100vw - 1.6rem));
+    padding: 1.3rem 1.4rem 1.2rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
+    animation: install-in 380ms var(--ease-out);
+  }
+
+  @keyframes install-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  .install__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.7rem;
+  }
+
+  .install__close {
+    color: var(--muted);
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.4rem;
+  }
+
+  .install__close:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  .install h2 {
+    font-size: 1.02rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+
+  .install ol {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.3rem;
+    font-size: 0.88rem;
+    color: var(--text-2);
+  }
+
+  .install ol strong {
+    color: var(--text);
+    font-weight: 570;
+  }
+
+  .install__why {
+    margin-top: 0.7rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .install__discord {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-text);
+  }
+
+  .install__discord:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  const panel = document.getElementById('install-panel');
+  const close = document.getElementById('install-close');
+
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement).closest('a.js-download');
+    if (link && panel) panel.hidden = false;
+  });
+
+  close?.addEventListener('click', () => {
+    if (panel) panel.hidden = true;
+  });
+</script>

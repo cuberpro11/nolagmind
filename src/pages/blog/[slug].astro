@@ -1,0 +1,177 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+function formatDate(d: Date) {
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
+}
+---
+
+<Base title={`${post.data.title} — ${site.name}`} description={post.data.excerpt}>
+  <article class="post section">
+    <div class="container post__inner">
+      <p class="tick-label" data-reveal>
+        <a href="/blog" class="tick-accent">[blog]</a>
+      </p>
+      <h1 class="display post__title" data-reveal style="--reveal-delay: 60ms">
+        {post.data.title}
+      </h1>
+      <p class="post__date" data-reveal style="--reveal-delay: 100ms">
+        {formatDate(post.data.date)}
+      </p>
+
+      <div class="post__body prose-max" data-reveal style="--reveal-delay: 140ms">
+        <Content />
+      </div>
+
+      <p class="post__foot hairline-top">
+        <a href="/blog">&larr; back to all posts</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .post__inner {
+    max-width: 52rem;
+    padding-inline: clamp(1rem, 3.25vw, 2.1rem);
+  }
+
+  .post__title {
+    margin-top: 1.2rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .post__date {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    color: var(--muted);
+  }
+
+  .post__body {
+    margin-top: 3rem;
+    max-width: none;
+  }
+
+  .post__body :global(h2) {
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.35rem;
+    font-weight: 640;
+    letter-spacing: -0.015em;
+  }
+
+  .post__body :global(h3) {
+    margin-top: 1.9rem;
+    margin-bottom: 0.7rem;
+    font-size: 1.15rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+  }
+
+  .post__body :global(p) {
+    margin-top: 1rem;
+    color: var(--text-2);
+    line-height: 1.75;
+  }
+
+  .post__body :global(p:first-child) {
+    margin-top: 0;
+  }
+
+  .post__body :global(strong) {
+    color: var(--text);
+    font-weight: 620;
+  }
+
+  .post__body :global(a) {
+    color: var(--accent-text);
+  }
+
+  .post__body :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .post__body :global(ul),
+  .post__body :global(ol) {
+    margin-top: 1rem;
+    padding-left: 1.3rem;
+    color: var(--text-2);
+    line-height: 1.75;
+  }
+
+  .post__body :global(li) {
+    margin-top: 0.3rem;
+  }
+
+  .post__body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.12em 0.4em;
+  }
+
+  .post__body :global(pre) {
+    margin-top: 1.2rem;
+    padding: 1rem 1.1rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface) !important;
+    overflow-x: auto;
+  }
+
+  .post__body :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .post__body :global(blockquote) {
+    margin-top: 1.2rem;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--border-strong);
+    color: var(--text-2);
+    font-style: italic;
+  }
+
+  .post__body :global(hr) {
+    margin-block: 2rem;
+    border: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .post__foot {
+    margin-top: 3.5rem;
+    padding-top: 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+  }
+
+  .post__foot a {
+    color: var(--accent-text);
+  }
+
+  .post__foot a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,537 @@
+/* ------------------------------------------------------------------ */
+/*  No Lag Mind — design tokens & shared utilities                     */
+/* ------------------------------------------------------------------ */
+
+:root {
+  /* dark theme (default) */
+  --bg: #060609;
+  --bg-elevated: #0b0b11;
+  --surface: #0d0d14;
+  --surface-2: #12121a;
+  --surface-3: #191925;
+  --text: #eceef2;
+  --text-2: #a2a7b3;
+  --muted: #6a707d;
+  --border: rgba(164, 174, 194, 0.11);
+  --border-strong: rgba(164, 174, 194, 0.2);
+  --accent: #22d3ee;
+  --accent-soft: rgba(34, 211, 238, 0.12);
+  --accent-text: #67e8f9;
+  --on-accent: #04151a;
+  --keycap-face: #15151e;
+  --keycap-edge: #000000;
+  --shadow-soft: 0 24px 60px -28px rgba(0, 0, 0, 0.85);
+  --grid-dot: rgba(164, 174, 194, 0.13);
+
+  --font-sans: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --page-max: 76rem;
+  --page-pad: clamp(1.25rem, 4vw, 2.5rem);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f6f6f8;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0f1f4;
+  --surface-3: #e7e9ee;
+  --text: #14151b;
+  --text-2: #4d5361;
+  --muted: #878d9a;
+  --border: rgba(20, 21, 27, 0.1);
+  --border-strong: rgba(20, 21, 27, 0.2);
+  --accent: #0891b2;
+  --accent-soft: rgba(8, 145, 178, 0.1);
+  --accent-text: #0e7490;
+  --on-accent: #ffffff;
+  --keycap-face: #ffffff;
+  --keycap-edge: #c9cdd6;
+  --shadow-soft: 0 24px 60px -30px rgba(20, 21, 27, 0.28);
+  --grid-dot: rgba(20, 21, 27, 0.12);
+
+  color-scheme: light;
+}
+
+/* ------------------------------------------------------------------ */
+/*  reset                                                              */
+/* ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  typography helpers                                                 */
+/* ------------------------------------------------------------------ */
+
+.display {
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.tick-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: var(--muted);
+}
+
+.tick-label .tick-accent {
+  color: var(--accent-text);
+}
+
+.prose-max {
+  max-width: 34em;
+  text-wrap: pretty;
+}
+
+/* ------------------------------------------------------------------ */
+/*  layout                                                             */
+/* ------------------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+.section {
+  padding-block: clamp(4.5rem, 10vw, 8.5rem);
+}
+
+.hairline-top {
+  border-top: 1px solid var(--border);
+}
+
+/* dot-grid texture, used sparingly */
+.dot-grid {
+  background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* ------------------------------------------------------------------ */
+/*  keycap button — the brand's signature control                      */
+/* ------------------------------------------------------------------ */
+
+.keycap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0.72em 1.35em;
+  border-radius: 0.65em;
+  background: var(--keycap-face);
+  border: 1px solid var(--border-strong);
+  box-shadow:
+    0 3px 0 var(--keycap-edge),
+    0 10px 24px -12px rgba(0, 0, 0, 0.5);
+  font-weight: 550;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  transition:
+    transform 130ms var(--ease-out),
+    box-shadow 130ms var(--ease-out),
+    border-color 130ms var(--ease-out);
+  user-select: none;
+}
+
+.keycap:hover {
+  border-color: var(--accent);
+}
+
+.keycap:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 0 0 var(--keycap-edge),
+    0 4px 12px -8px rgba(0, 0, 0, 0.5);
+}
+
+.keycap--accent {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: transparent;
+  box-shadow:
+    0 3px 0 color-mix(in srgb, var(--accent) 55%, black),
+    0 12px 28px -12px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.keycap--accent:hover {
+  border-color: transparent;
+  filter: brightness(1.06);
+}
+
+.keycap--accent:active {
+  box-shadow:
+    0 0 0 color-mix(in srgb, var(--accent) 55%, black),
+    0 4px 12px -8px rgba(0, 0, 0, 0.4);
+}
+
+.keycap--quiet {
+  box-shadow: 0 2px 0 var(--keycap-edge);
+  font-size: 0.88rem;
+  padding: 0.55em 1em;
+}
+
+/* small inline kbd chip */
+.kbd {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  padding: 0.15em 0.5em;
+  border-radius: 0.4em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  box-shadow: 0 1.5px 0 var(--border-strong);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------ */
+/*  blinking block caret                                               */
+/* ------------------------------------------------------------------ */
+
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.15em;
+  margin-left: 1px;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  animation: caret-blink 1.1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  fake app window (all product mockups live inside one of these)     */
+/* ------------------------------------------------------------------ */
+
+.window {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.window__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.window__dots span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.window__title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  /* keep title optically centered despite the dots */
+  margin-right: 45px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------------------------ */
+/*  animated demo surfaces (typed lines, dropdowns, result rows)       */
+/* ------------------------------------------------------------------ */
+
+.demo-page {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  text-align: left;
+}
+
+.demo-page .l {
+  min-height: 1.75em;
+}
+
+.demo-page .l-h1 {
+  font-size: 1.5em;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.35em;
+}
+
+.demo-page .l-h2 {
+  font-size: 1.22em;
+  font-weight: 640;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  margin-bottom: 0.25em;
+}
+
+.demo-page .raw {
+  color: var(--muted);
+}
+
+.demo-page .b {
+  font-weight: 680;
+}
+
+.demo-page .i {
+  font-style: italic;
+}
+
+.demo-page .wl {
+  color: var(--accent-text);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.demo-page .task {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55em;
+}
+
+.demo-page .task .box {
+  display: inline-grid;
+  place-items: center;
+  width: 0.95em;
+  height: 0.95em;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 0.25em;
+  font-size: 0.7em;
+  line-height: 1;
+  color: var(--on-accent);
+  transform: translateY(0.12em);
+  transition: background 150ms, border-color 150ms;
+}
+
+.demo-page .task.is-done .box {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.demo-page .task.is-done .task-text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* floating autocomplete / command menu inside demos */
+.demo-menu {
+  width: max-content;
+  min-width: 13rem;
+  margin-top: 0.35rem;
+  padding: 0.3rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+  font-size: 0.85em;
+  animation: demo-pop 160ms var(--ease-out);
+}
+
+@keyframes demo-pop {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.demo-menu__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.32em 0.6em;
+  border-radius: 6px;
+  color: var(--text-2);
+}
+
+.demo-menu__item .hint {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+.demo-menu__item.is-active {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+/* search-result style rows */
+.demo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5em 0.75em;
+  border-radius: 8px;
+  font-size: 0.9em;
+  animation: demo-pop 200ms var(--ease-out) backwards;
+}
+
+.demo-row.is-active {
+  background: var(--accent-soft);
+}
+
+.demo-row .demo-row__meta {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.demo-row .snippet {
+  color: var(--text-2);
+  font-size: 0.88em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.demo-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72em;
+  padding: 0.1em 0.55em;
+  border-radius: 99px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  white-space: nowrap;
+}
+
+.demo-hl {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  border-radius: 3px;
+  padding-inline: 0.08em;
+}
+
+/* ------------------------------------------------------------------ */
+/*  scroll reveal                                                      */
+/* ------------------------------------------------------------------ */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 700ms var(--ease-out),
+    transform 700ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .caret {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+  }
+}
+
+/* `?static` in the URL freezes all motion (testing/screenshots) */
+:root.static {
+  scroll-behavior: auto;
+}
+
+:root.static [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+:root.static *,
+:root.static *::before,
+:root.static *::after {
+  animation: none !important;
+  transition: none !important;
+}

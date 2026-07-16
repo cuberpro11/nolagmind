@@ -1,0 +1,213 @@
+---
+import { showcaseThemes, TOTAL_THEMES } from '../data/themes';
+---
+
+<section class="themes section hairline-top">
+  <div class="container">
+    <p class="tick-label" data-reveal>
+      <span class="tick-accent">[06]</span> make it yours
+    </p>
+    <h2 class="display themes__title" data-reveal style="--reveal-delay: 60ms">
+      {TOTAL_THEMES} themes, down to the title bar.
+    </h2>
+    <p class="themes__lede prose-max" data-reveal style="--reveal-delay: 110ms">
+      Gruvbox, Catppuccin, Rosé Pine, Tokyo Night — the palettes you already
+      love, matched exactly, recoloring everything including the native window
+      chrome. Hover one.
+    </p>
+
+    <div class="themes__stage" data-reveal style="--reveal-delay: 160ms">
+      <div class="window themes__preview" id="theme-preview">
+        <div class="window__bar" style="background: var(--tp-surface); border-color: var(--tp-border)">
+          <div class="window__dots"><span style="background: var(--tp-muted)"></span><span style="background: var(--tp-muted)"></span><span style="background: var(--tp-muted)"></span></div>
+          <div class="window__title" style="color: var(--tp-muted)" id="theme-preview-name">catppuccin mocha</div>
+        </div>
+        <div class="themes__page">
+          <p class="themes__h">Colors that feel like home</p>
+          <p class="themes__body">
+            Your <span class="themes__link">[[favorite palette]]</span> follows you from your editor to your notes.
+          </p>
+          <p class="themes__meta">#themes &nbsp;·&nbsp; settings: theme</p>
+        </div>
+      </div>
+
+      <div class="themes__swatches" role="list">
+        {
+          showcaseThemes.map((t, i) => (
+            <button
+              type="button"
+              role="listitem"
+              class:list={['swatch', { 'is-active': i === 0 }]}
+              data-bg={t.bg}
+              data-surface={t.surface}
+              data-text={t.text}
+              data-muted={t.muted}
+              data-accent={t.accent}
+              data-border={t.border}
+              data-name={t.name}
+              aria-label={`Preview the ${t.name} theme`}
+            >
+              <span class="swatch__chip" style={`background:${t.bg}`}>
+                <i style={`background:${t.accent}`}></i>
+                <i style={`background:${t.text}`}></i>
+              </span>
+              <span class="swatch__name">{t.name}</span>
+            </button>
+          ))
+        }
+        <span class="swatch swatch--more">+{TOTAL_THEMES - showcaseThemes.length} more in the app</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .themes__title {
+    margin-top: 1.1rem;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+  }
+
+  .themes__lede {
+    margin-top: 1.1rem;
+    color: var(--text-2);
+  }
+
+  .themes__stage {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .themes__preview {
+    --tp-bg: #1e1e2e;
+    --tp-surface: #181825;
+    --tp-text: #cdd6f4;
+    --tp-muted: #6c7086;
+    --tp-accent: #89b4fa;
+    --tp-border: #313244;
+    background: var(--tp-bg);
+    border-color: var(--tp-border);
+    transition: background 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  }
+
+  .themes__preview .window__bar {
+    transition: background 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  }
+
+  .themes__page {
+    padding: 1.6rem 1.8rem 1.8rem;
+  }
+
+  .themes__h {
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    color: var(--tp-text);
+    transition: color 300ms;
+  }
+
+  .themes__body {
+    margin-top: 0.6rem;
+    font-size: 0.92rem;
+    color: color-mix(in srgb, var(--tp-text) 75%, var(--tp-muted));
+    transition: color 300ms;
+  }
+
+  .themes__link {
+    color: var(--tp-accent);
+    border-bottom: 1px solid color-mix(in srgb, var(--tp-accent) 50%, transparent);
+    transition: color 300ms;
+  }
+
+  .themes__meta {
+    margin-top: 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--tp-muted);
+    transition: color 300ms;
+  }
+
+  .themes__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-content: start;
+  }
+
+  .swatch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.75rem 0.4rem 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-2);
+    transition: border-color 150ms, color 150ms, transform 150ms var(--ease-out);
+  }
+
+  .swatch:hover {
+    transform: translateY(-1px);
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+
+  .swatch.is-active {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .swatch__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 4px 6px;
+    border-radius: 99px;
+    border: 1px solid var(--border);
+  }
+
+  .swatch__chip i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .swatch--more {
+    border-style: dashed;
+    color: var(--muted);
+    padding-left: 0.75rem;
+  }
+
+  @media (max-width: 880px) {
+    .themes__stage {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const preview = document.getElementById('theme-preview')!;
+  const nameEl = document.getElementById('theme-preview-name')!;
+  const swatches = document.querySelectorAll<HTMLButtonElement>('.swatch[data-name]');
+
+  function apply(s: HTMLButtonElement) {
+    const d = s.dataset;
+    preview.style.setProperty('--tp-bg', d.bg!);
+    preview.style.setProperty('--tp-surface', d.surface!);
+    preview.style.setProperty('--tp-text', d.text!);
+    preview.style.setProperty('--tp-muted', d.muted!);
+    preview.style.setProperty('--tp-accent', d.accent!);
+    preview.style.setProperty('--tp-border', d.border!);
+    nameEl.textContent = d.name!.toLowerCase();
+    swatches.forEach((x) => x.classList.toggle('is-active', x === s));
+  }
+
+  swatches.forEach((s) => {
+    s.addEventListener('mouseenter', () => apply(s));
+    s.addEventListener('focus', () => apply(s));
+    s.addEventListener('click', () => apply(s));
+  });
+</script>

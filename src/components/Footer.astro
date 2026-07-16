@@ -1,0 +1,105 @@
+---
+import Logo from './Logo.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer hairline-top">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <Logo />
+      <p class="footer__tag">zero lag between mind and screen.</p>
+    </div>
+
+    <nav class="footer__col" aria-label="Product">
+      <h3 class="tick-label">product</h3>
+      <a href="/#features">features</a>
+      <a href="/#pricing">extras</a>
+      <a href="/download">download</a>
+      <a href="/changelog">changelog</a>
+      <a href="/docs">docs</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Community">
+      <h3 class="tick-label">community</h3>
+      <a href={site.discordUrl} target="_blank" rel="noopener">discord</a>
+      <a href={site.blogUrl}>blog</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="No Lag Mind">
+      <h3 class="tick-label">no lag mind</h3>
+      <a href={site.brandUrl} target="_blank" rel="noopener">nolagmind.com</a>
+      <a href={site.typemasterUrl} target="_blank" rel="noopener">typemaster</a>
+    </nav>
+  </div>
+
+  <div class="container footer__base">
+    <span>© {year} No Lag Mind</span>
+    <span class="footer__version">note app v{site.version} · happy note-taking</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: 3.5rem 2rem;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer__tag {
+    margin-top: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+  }
+
+  .footer__col h3 {
+    margin-bottom: 0.35rem;
+  }
+
+  .footer__col a {
+    color: var(--text-2);
+    width: fit-content;
+    transition: color 130ms;
+  }
+
+  .footer__col a:hover {
+    color: var(--text);
+  }
+
+  .footer__base {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 720px) {
+    .footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__brand {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

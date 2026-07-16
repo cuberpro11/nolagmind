@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SpeedStrip from '../components/SpeedStrip.astro';
+import FeatureSection from '../components/FeatureSection.astro';
+import EditingDemo from '../components/EditingDemo.astro';
+import WikilinkDemo from '../components/WikilinkDemo.astro';
+import SlashDemo from '../components/SlashDemo.astro';
+import ColonDemo from '../components/ColonDemo.astro';
+import DepthIndex from '../components/DepthIndex.astro';
+import ThemesStrip from '../components/ThemesStrip.astro';
+import LocalFirst from '../components/LocalFirst.astro';
+import Pricing from '../components/Pricing.astro';
+import MakerNote from '../components/MakerNote.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+---
+
+<Base>
+  <Hero />
+  <SpeedStrip />
+
+  <div id="features">
+    <FeatureSection
+      num="01"
+      kicker="zero-lag editing"
+      title="Typing that keeps up with thinking."
+      body={[
+        'Markdown becomes formatting the instant you type it — headings, quotes, checklists, code — with no mode switch and no preview pane.',
+        'There are <strong>no loading bars anywhere</strong> in the app. Notes open instantly, save themselves, and never interrupt a sentence.',
+      ]}
+    >
+      <EditingDemo />
+    </FeatureSection>
+
+    <FeatureSection
+      num="02"
+      kicker="wikilinks & backlinks"
+      title="Connect ideas with two brackets."
+      body={[
+        'Type <span class="kbd">[[</span> and the note you\'re thinking of is already suggested. Link it, keep typing, and jump through links with <span class="kbd">⌘ Enter</span> — or open them side by side in a split.',
+        'Every note quietly lists which notes mention it, down to the exact sentence. Zoom out to the <strong>graph view</strong> and watch your notes become a map of how you think.',
+      ]}
+      flip
+    >
+      <WikilinkDemo />
+    </FeatureSection>
+
+    <FeatureSection
+      num="03"
+      kicker="slash commands"
+      title={'Type "/" and keep going.'}
+      body={[
+        'Dates, times, tables — summon them mid-sentence without touching the mouse or breaking your flow.',
+        'Then make it yours: <strong>build your own slash commands</strong> for the snippets and templates you reach for every day. Your standup, your meeting notes, your rituals — one keystroke away.',
+      ]}
+    >
+      <SlashDemo />
+    </FeatureSection>
+
+    <FeatureSection
+      num="04"
+      kicker="colon commands"
+      title="A search bar that does what you say."
+      body={[
+        'Press <span class="kbd">⌘O</span> and just say it. <span class="kbd">tag: recipes</span> filters your notes. <span class="kbd">vault: work</span> switches worlds. <span class="kbd">grep:</span> tears through the full text of everything you\'ve ever written — powered by native code, back before your finger lifts.',
+        'Change settings, run keyboard shortcuts, batch-move notes — all from the same bar, all without a menu in sight.',
+      ]}
+      flip
+    >
+      <ColonDemo />
+    </FeatureSection>
+  </div>
+
+  <DepthIndex />
+  <ThemesStrip />
+  <LocalFirst />
+  <Pricing />
+  <MakerNote />
+  <Faq />
+  <FinalCta />
+</Base>

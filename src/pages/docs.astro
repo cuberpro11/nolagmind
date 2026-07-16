@@ -1,0 +1,160 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const planned = [
+  'getting started — vaults, notes, and your first wikilink',
+  'the search bar — every colon command, explained',
+  'slash commands — built-ins and building your own',
+  'views — graph, mind maps, boards, tasks, and daily notes',
+  'keyboard shortcuts — the full cheat sheet',
+  'themes — the whole gallery',
+];
+---
+
+<Base title={`Docs — ${site.name}`} description="Documentation for the No Lag Mind Note App is being written.">
+  <section class="docs section">
+    <div class="container docs__inner">
+      <div class="window docs__window" data-reveal>
+        <div class="window__bar">
+          <div class="window__dots"><span></span><span></span><span></span></div>
+          <div class="window__title">search — no lag mind</div>
+        </div>
+        <div class="docs__input">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-3.5-3.5"></path>
+          </svg>
+          <span class="docs__query"><span class="docs__cmd" id="docs-typed"></span><span class="caret"></span></span>
+        </div>
+        <div class="docs__result" id="docs-result" hidden>
+          <p>0 results — for now.</p>
+        </div>
+      </div>
+
+      <h1 class="display docs__title" data-reveal style="--reveal-delay: 80ms">
+        The docs are being written.
+      </h1>
+      <p class="docs__sub" data-reveal style="--reveal-delay: 130ms">
+        Carefully, and at speed. In the meantime, the app documents itself:
+        press <span class="kbd">⌘O</span> inside it and type
+        <span class="kbd">keyboard:</span> for the full searchable cheat sheet
+        of every shortcut and markdown trick.
+      </p>
+
+      <div class="docs__planned" data-reveal style="--reveal-delay: 180ms">
+        <h2 class="tick-label"><span class="tick-accent">[soon]</span> what's coming</h2>
+        <ul>
+          {planned.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+
+      <div class="docs__cta" data-reveal style="--reveal-delay: 220ms">
+        <a href={site.discordUrl} target="_blank" rel="noopener" class="keycap">
+          ask anything on discord
+        </a>
+        <a href="/" class="keycap keycap--quiet">← back home</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .docs__inner {
+    max-width: 42rem;
+  }
+
+  .docs__window {
+    width: min(30rem, 100%);
+  }
+
+  .docs__input {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0.9rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    color: var(--muted);
+  }
+
+  .docs__query {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+
+  .docs__cmd {
+    color: var(--accent-text);
+  }
+
+  .docs__result {
+    padding: 0 1.2rem 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .docs__title {
+    margin-top: 2.5rem;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+  }
+
+  .docs__sub {
+    margin-top: 1.2rem;
+    color: var(--text-2);
+    max-width: 36em;
+    text-wrap: pretty;
+  }
+
+  .docs__planned {
+    margin-top: 2.6rem;
+  }
+
+  .docs__planned ul {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    color: var(--text-2);
+  }
+
+  .docs__planned li::before {
+    content: '▸ ';
+    color: var(--muted);
+  }
+
+  .docs__cta {
+    display: flex;
+    gap: 0.9rem;
+    margin-top: 2.6rem;
+    flex-wrap: wrap;
+  }
+</style>
+
+<script>
+  import { prefersReducedMotion, sleep, typeText, onVisible } from '../scripts/demo';
+
+  const typed = document.getElementById('docs-typed')!;
+  const result = document.getElementById('docs-result')!;
+
+  async function run() {
+    await sleep(600);
+    await typeText(typed, 'docs:', 55);
+    await typeText(typed, ' where are you', 45);
+    await sleep(400);
+    result.hidden = false;
+  }
+
+  if (prefersReducedMotion()) {
+    typed.textContent = 'docs: where are you';
+    result.hidden = false;
+  } else {
+    onVisible(typed, run);
+  }
+</script>

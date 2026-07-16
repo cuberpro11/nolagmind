@@ -1,0 +1,181 @@
+---
+// Colon-command demo: the search bar cycling through real commands.
+---
+
+<div class="window colon" id="colon-demo">
+  <div class="window__bar">
+    <div class="window__dots"><span></span><span></span><span></span></div>
+    <div class="window__title">search — no lag mind</div>
+  </div>
+
+  <div class="colon__input">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <path d="m20 20-3.5-3.5"></path>
+    </svg>
+    <span class="colon__query demo-page" id="colon-query"></span>
+    <span class="kbd">⌘O</span>
+  </div>
+
+  <div class="colon__results" id="colon-results"></div>
+
+  <p class="colon__hint tick-label">
+    try: <span class="tick-accent">tag:</span> · <span class="tick-accent">grep:</span> ·
+    <span class="tick-accent">vault:</span> · <span class="tick-accent">settings:</span> ·
+    <span class="tick-accent">batch:</span>
+  </p>
+</div>
+
+<style>
+  .colon__input {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0.9rem 0.9rem 0;
+    padding: 0.65rem 0.85rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    color: var(--muted);
+  }
+
+  .colon__query {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .colon__query :global(.cmd) {
+    color: var(--accent-text);
+    font-weight: 500;
+  }
+
+  .colon__results {
+    min-height: 10.5rem;
+    padding: 0.6rem 0.9rem;
+  }
+
+  .colon__hint {
+    padding: 0 1rem 1rem;
+    font-size: 0.7rem;
+  }
+</style>
+
+<script>
+  import { prefersReducedMotion, sleep, typeText, deleteText, runLoop } from '../scripts/demo';
+
+  const query = document.getElementById('colon-query')!;
+  const results = document.getElementById('colon-results')!;
+
+  const caret = document.createElement('span');
+  caret.className = 'caret';
+
+  const row = (body: string, i: number, active = false) =>
+    `<div class="demo-row${active ? ' is-active' : ''}" style="animation-delay:${i * 60}ms">${body}</div>`;
+
+  interface Scene {
+    cmd: string;
+    rest: string;
+    render(): string;
+  }
+
+  const scenes: Scene[] = [
+    {
+      cmd: 'tag:',
+      rest: ' recipes',
+      render: () =>
+        ['sourdough starter', 'weeknight curry', 'coffee ratios, v3']
+          .map((t, i) =>
+            row(`<span>${t}</span><span class="demo-chip">#recipes</span>`, i, i === 0)
+          )
+          .join(''),
+    },
+    {
+      cmd: 'grep:',
+      rest: ' tauri',
+      render: () =>
+        [
+          ['project log', 'switched the rebuild to <span class="demo-hl">tauri</span> last spring'],
+          ['reading list', 'benchmark: <span class="demo-hl">tauri</span> vs electron memory use'],
+          ['ideas', 'a <span class="demo-hl">tauri</span> menubar companion app?'],
+        ]
+          .map(([name, snip], i) =>
+            row(`<span class="snippet">${snip}</span><span class="demo-row__meta">${name}.md</span>`, i, i === 0)
+          )
+          .join(''),
+    },
+    {
+      cmd: 'vault:',
+      rest: ' work',
+      render: () =>
+        [
+          ['work', 'switch to this vault', true],
+          ['work / clients', 'switch to this vault', false],
+        ]
+          .map(([name, hint, active], i) =>
+            row(
+              `<span>${name}</span><span class="demo-row__meta">${hint}</span>`,
+              i,
+              active as boolean
+            )
+          )
+          .join(''),
+    },
+    {
+      cmd: 'settings:',
+      rest: ' theme',
+      render: () =>
+        [
+          ['Theme', 'Catppuccin Mocha ▾', true],
+          ['Developer themes', 'open section', false],
+        ]
+          .map(([name, val, active], i) =>
+            row(
+              `<span>${name}</span><span class="demo-row__meta">${val}</span>`,
+              i,
+              active as boolean
+            )
+          )
+          .join(''),
+    },
+  ];
+
+  async function run() {
+    query.textContent = '';
+    query.appendChild(caret);
+    results.innerHTML = '';
+    await sleep(600);
+
+    for (const scene of scenes) {
+      const cmd = document.createElement('span');
+      cmd.className = 'cmd';
+      query.insertBefore(cmd, caret);
+      await typeText(cmd, scene.cmd, 46);
+
+      const rest = document.createElement('span');
+      query.insertBefore(rest, caret);
+      await typeText(rest, scene.rest, 46);
+
+      // results land the moment the query does
+      results.innerHTML = scene.render();
+      await sleep(2600);
+
+      await deleteText(rest, scene.rest.length, 12);
+      await deleteText(cmd, scene.cmd.length, 12);
+      cmd.remove();
+      rest.remove();
+      results.innerHTML = '';
+      await sleep(350);
+    }
+  }
+
+  if (prefersReducedMotion()) {
+    query.innerHTML = '<span class="cmd">tag:</span> recipes';
+    results.innerHTML = scenes[0].render();
+  } else {
+    runLoop(query, run);
+  }
+</script>

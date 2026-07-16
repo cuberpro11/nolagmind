@@ -1,0 +1,166 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const platforms = [
+  {
+    name: 'macOS — Apple Silicon',
+    detail: 'M1 and later · macOS 10.13+',
+    status: 'available',
+  },
+  { name: 'macOS — Intel', detail: 'on the roadmap', status: 'soon' },
+  { name: 'Windows', detail: 'on the roadmap', status: 'soon' },
+  { name: 'Linux', detail: 'under consideration', status: 'soon' },
+];
+---
+
+<Base title={`Download — ${site.name}`} description="Download the No Lag Mind Note App for macOS. Free, native, local-first.">
+  <section class="dl section">
+    <div class="container dl__inner">
+      <p class="tick-label" data-reveal>
+        <span class="tick-accent">[download]</span> v{site.version} · free
+      </p>
+      <h1 class="display dl__title" data-reveal style="--reveal-delay: 60ms">
+        Get No Lag Mind.
+      </h1>
+      <p class="dl__sub" data-reveal style="--reveal-delay: 110ms">
+        One small download. No account, no setup wizard — you'll be typing in
+        under a minute.
+      </p>
+
+      <div class="dl__platforms" data-reveal style="--reveal-delay: 160ms">
+        {
+          platforms.map((p) => (
+            <div class:list={['dl__row', { 'dl__row--soon': p.status === 'soon' }]}>
+              <div>
+                <h2>{p.name}</h2>
+                <p>{p.detail}</p>
+              </div>
+              {p.status === 'available' ? (
+                <a href={site.downloadUrl} class="keycap keycap--accent js-download" download>
+                  download
+                </a>
+              ) : (
+                <a
+                  href={site.discordUrl}
+                  target="_blank"
+                  rel="noopener"
+                  class="keycap keycap--quiet"
+                  title="Join the Discord to hear when this ships"
+                >
+                  notify me
+                </a>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="dl__install" data-reveal style="--reveal-delay: 220ms">
+        <h2 class="tick-label"><span class="tick-accent">[setup]</span> first launch on macOS</h2>
+        <ol>
+          <li>Unzip the download and drag the app into <strong>Applications</strong>.</li>
+          <li><strong>Right-click</strong> the app and choose <strong>Open</strong>, then confirm. macOS asks because the app isn't notarized with Apple yet — this happens once.</li>
+          <li>Done. From here on it opens normally and <strong>updates itself</strong>, showing you what's new after each release.</li>
+        </ol>
+        <p class="dl__help">
+          Stuck? <a href={site.discordUrl} target="_blank" rel="noopener">Ask on Discord</a> — you'll get a fast answer.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .dl__inner {
+    max-width: 46rem;
+  }
+
+  .dl__title {
+    margin-top: 1.2rem;
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+  }
+
+  .dl__sub {
+    margin-top: 1.2rem;
+    color: var(--text-2);
+    max-width: 34em;
+  }
+
+  .dl__platforms {
+    margin-top: 2.8rem;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .dl__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1.15rem 1.4rem;
+    background: var(--surface);
+  }
+
+  .dl__row + .dl__row {
+    border-top: 1px solid var(--border);
+  }
+
+  .dl__row h2 {
+    font-size: 1rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+  }
+
+  .dl__row p {
+    margin-top: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  .dl__row--soon h2 {
+    color: var(--text-2);
+  }
+
+  .dl__install {
+    margin-top: 3rem;
+  }
+
+  .dl__install ol {
+    margin: 1.2rem 0 0;
+    padding-left: 1.3rem;
+    display: grid;
+    gap: 0.7rem;
+    color: var(--text-2);
+    font-size: 0.95rem;
+    max-width: 40em;
+  }
+
+  .dl__install strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .dl__help {
+    margin-top: 1.4rem;
+    font-size: 0.9rem;
+    color: var(--text-2);
+  }
+
+  .dl__help a {
+    color: var(--accent-text);
+  }
+
+  .dl__help a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 560px) {
+    .dl__row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
