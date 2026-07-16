@@ -1,0 +1,54 @@
+{
+  "versions": [
+    "0.1.9",
+    "0.2.0",
+    "0.2.1",
+    "0.2.2",
+    "0.2.3",
+    "0.2.4",
+    "0.2.5",
+    "2.1.0"
+  ],
+  "entries": {
+    "0.1.9": {
+      "version": "0.1.9",
+      "title": "No Lag Mind Note App 0.1.9",
+      "body": "- Current stable release before automatic updates\n- Local-first vault storage with markdown, mind maps, and boards\n- Graph view, daily notes, keyboard shortcuts, and themes"
+    },
+    "0.2.0": {
+      "version": "0.2.0",
+      "title": "What's New in 0.2.0",
+      "body": "- Automatic updates — the app checks for new versions when you open it\n- What's New popup shows release notes after each update\n- Check for Updates in Settings → About\n- Board find: only the selected match stays highlighted after pressing Enter (matches markdown notes)\n- Bug fixes and performance improvements"
+    },
+    "0.2.1": {
+      "version": "0.2.1",
+      "title": "What's New in 0.2.1",
+      "body": "- Rosé Pine theme — popular developer palette in dark and light (Dawn) variants\n- Find them in Settings → Developer Themes"
+    },
+    "0.2.2": {
+      "version": "0.2.2",
+      "title": "What's New in 0.2.2",
+      "body": "- Update available popup on launch — blurred backdrop, version, and full release notes; Settings check remains as fallback\n- Developer themes — dark and light variants aligned in matching rows (e.g. Gruvbox Dark beside Gruvbox Light)\n- View entrance animations — quick, snappy animations when opening home screens, tasks, calendar, and graph (respects reduced motion)"
+    },
+    "0.2.3": {
+      "version": "0.2.3",
+      "title": "What's New in 0.2.3",
+      "body": "- Fix Recent Cards entrance animation stacking all cards on top of each other\n- Add `/release-note-app` Cursor slash command for one-step app + website releases"
+    },
+    "0.2.4": {
+      "version": "0.2.4",
+      "title": "What's New in 0.2.4",
+      "body": "- Add due dates to board tasks — set from the column, slash menu, or task detail panel\n- Task view groups board tasks by due date (Overdue, Today, This week, Later)\n- Faster sidebar, search, and startup with improved property cache and usage stats"
+    },
+    "0.2.5": {
+      "version": "0.2.5",
+      "title": "What's New in 0.2.5",
+      "body": "- Catppuccin themes — official Mocha (dark) and Latte (light) palette colors in Developer Themes"
+    },
+    "2.1.0": {
+      "version": "2.1.0",
+      "title": "What's New in 2.1.0",
+      "body": "- Sort by note type — filter notes in Search with `sort: note type markdown`, `mindmap`, or `board` (supports `or` to combine types)\n- Mind map zoom — Ctrl+scroll to zoom toward the cursor in mind map panes\n- Alias search — aliases now match only when the query appears as a consecutive substring (no fuzzy subsequence matching)\n- Sort list autocomplete — list property values in sort filters now use prefix matching for faster, more predictable suggestions"
+    }
+  }
+}
