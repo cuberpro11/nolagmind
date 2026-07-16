@@ -8,6 +8,29 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.1.0',
+    highlights: [
+      'Sort by note type — filter notes in Search with sort: note type markdown, mindmap, or board (supports or to combine types)',
+      'Mind map zoom — Ctrl+scroll to zoom toward the cursor in mind map panes',
+      'Alias search — aliases now match only when the query appears as a consecutive substring',
+      'Sort list autocomplete — list property values in sort filters now use prefix matching',
+    ],
+  },
+  {
+    version: '0.2.5',
+    highlights: [
+      'Catppuccin themes — official Mocha (dark) and Latte (light) palette colors in Developer Themes',
+    ],
+  },
+  {
+    version: '0.2.4',
+    highlights: [
+      'Add due dates to board tasks — set from the column, slash menu, or task detail panel',
+      'Task view groups board tasks by due date (Overdue, Today, This week, Later)',
+      'Faster sidebar, search, and startup with improved property cache and usage stats',
+    ],
+  },
+  {
     version: '0.2.3',
     highlights: [
       'Fixed the Recent Cards entrance animation stacking cards on top of each other',
