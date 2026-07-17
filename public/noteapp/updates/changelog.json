@@ -7,7 +7,8 @@
     "0.2.3",
     "0.2.4",
     "0.2.5",
-    "2.1.0"
+    "2.1.0",
+    "2.1.1"
   ],
   "entries": {
     "0.1.9": {
@@ -49,6 +50,11 @@
       "version": "2.1.0",
       "title": "What's New in 2.1.0",
       "body": "- Sort by note type — filter notes in Search with `sort: note type markdown`, `mindmap`, or `board` (supports `or` to combine types)\n- Mind map zoom — Ctrl+scroll to zoom toward the cursor in mind map panes\n- Alias search — aliases now match only when the query appears as a consecutive substring (no fuzzy subsequence matching)\n- Sort list autocomplete — list property values in sort filters now use prefix matching for faster, more predictable suggestions"
+    },
+    "2.1.1": {
+      "version": "2.1.1",
+      "title": "What's New in 2.1.1",
+      "body": "- Developer theme colors — official palette colors for Gruvbox, Monokai Pro, One Dark, Tokyo Night, Ayu, Night Owl, Everforest, Kanagawa, Rosé Pine, and Horizon"
     }
   }
 }
