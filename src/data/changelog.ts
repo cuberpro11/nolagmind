@@ -8,6 +8,12 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.1.1',
+    highlights: [
+      'Developer theme colors — official palette colors for Gruvbox, Monokai Pro, One Dark, Tokyo Night, Ayu, Night Owl, Everforest, Kanagawa, Rosé Pine, and Horizon',
+    ],
+  },
+  {
     version: '2.1.0',
     highlights: [
       'Sort by note type — filter notes in Search with sort: note type markdown, mindmap, or board (supports or to combine types)',
