@@ -11,7 +11,8 @@
     "2.1.1",
     "2.1.2",
     "2.1.3",
-    "2.1.4"
+    "2.1.4",
+    "2.1.5"
   ],
   "entries": {
     "0.1.9": {
@@ -73,6 +74,11 @@
       "version": "2.1.4",
       "title": "What's New in 2.1.4",
       "body": "- Board task detail panel — opening task details suspends board keyboard shortcuts and inline editing so the side panel keeps focus without fighting the board behind it\n- Board find — blocked task titles are excluded from search until their blockers are completed\n- Mind map editing — clicking a node to edit now places the caret where you clicked instead of snapping to the end, so wikilink navigation works right after a click"
+    },
+    "2.1.5": {
+      "version": "2.1.5",
+      "title": "What's New in 2.1.5",
+      "body": "- Onboarding walkthrough — welcome notes are reorganized into beginner, intermediate, and advanced stages with dedicated subfolders for each level\n- New vaults — welcome notes copy recursively so nested walkthrough folders come along automatically\n- First vault — the app now opens \"Welcome (start here!)\" as the landing note instead of the old welcome.md"
     }
   }
 }
