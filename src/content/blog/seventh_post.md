@@ -1,7 +1,7 @@
 ---
 title: "Why you have to use a tiling window manager"
 date: 2025-12-14T00:00:00Z
-excerpt: "Stop wasting time dragging and resizing windows—discover how tiling window managers eliminate desktop chaos and let you control everything with your keyboard..."
+excerpt: "Stop wasting time dragging and resizing windows. Discover how tiling window managers eliminate desktop chaos and let you control everything with your keyboard..."
 draft: false
 ---
 ### Why your windows are a mess (and how to fix it)

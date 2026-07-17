@@ -13,8 +13,8 @@ import { site } from '../data/site';
     </h2>
     <p class="pricing__lede prose-max" data-reveal style="--reveal-delay: 110ms">
       No account, no trial that expires, no features held hostage. When you're
-      ready for more, these optional services and licenses are on the way —
-      they'll fund independent development, and they'll never be required.
+      ready for more, these optional services and licenses are on the way.
+      They'll fund independent development, and they'll never be required.
     </p>
 
     <div class="pricing__free" data-reveal style="--reveal-delay: 150ms">
@@ -36,7 +36,7 @@ import { site } from '../data/site';
               <h3>{o.name}</h3>
               <span class="pricing__badge">coming soon</span>
             </div>
-            <p class="pricing__kind tick-label">{o.kind === 'service' ? 'add-on service' : 'license'}</p>
+            <p class="pricing__kind tick-label">{o.kind === 'service' ? 'add on service' : 'license'}</p>
             <p class="pricing__summary">{o.summary}</p>
             <ul>
               {o.points.map((p) => (

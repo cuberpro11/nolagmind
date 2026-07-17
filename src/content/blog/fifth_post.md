@@ -1,7 +1,7 @@
 ---
 title: "Mastering Keyboard Shortcuts: How to Work at the Speed of Thought"
 date: 2025-10-24T00:00:00Z
-excerpt: "Transform your workflow from mouse-dependent to keyboard-mastered with essential shortcuts that let you navigate macOS and your apps without ever leaving the keyboard..."
+excerpt: "Transform your workflow from mouse dependent to keyboard mastered with essential shortcuts that let you navigate macOS and your apps without ever leaving the keyboard..."
 draft: false
 ---
 ### Why typing speed matters everywhere

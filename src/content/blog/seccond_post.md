@@ -1,10 +1,10 @@
 ---
-title: "The No-Click Principle: Why Your Mouse is Slowing You Down (and How to Fix It)"
+title: "The No Click Principle: Why Your Mouse is Slowing You Down (and How to Fix It)"
 date: 2025-10-21T00:00:00Z
-excerpt: "Discover how reaching for your mouse breaks your flow state and costs you hours of productivity—and learn the apps and techniques that let you work entirely with your keyboard..."
+excerpt: "Discover how reaching for your mouse breaks your flow state and costs you hours of productivity, and learn the apps and techniques that let you work entirely with your keyboard..."
 draft: false
 ---
-### What is the no-click principle?
+### What is the no click principle?
 
 It is the idea that taking your hand of the keyboard to reach for the mouse will significantly reduce your productivity. This is because of the time and context switch costs:
 
@@ -54,6 +54,6 @@ For all these reasons, you should dedicate a little time to learning Vim keybind
 
 This is just the first of many posts to come about how to use your keyboard as a tool to interface with your device at the speed of thought. There is so much that I haven't covered and such as tiling window management, words per minute, keyboards and chording, and much more.
 
-My hope is that you start experimenting today. If you implement just one of these apps or concepts a day, you will begin to master your digital environment and unlock hours of extra time—allowing you to accomplish more than you previously thought possible.
+My hope is that you start experimenting today. If you implement just one of these apps or concepts a day, you will begin to master your digital environment and unlock hours of extra time, allowing you to accomplish more than you previously thought possible.
 
 Thanks for reading, and I can't wait to see you tomorrow!

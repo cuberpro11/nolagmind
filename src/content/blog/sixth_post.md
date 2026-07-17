@@ -1,7 +1,7 @@
 ---
 title: My Vision for the Best Note Taking App
 date: 2025-11-06T00:00:00Z
-excerpt: "When existing note apps fall short, sometimes you have to build your own—here's my vision for a keyboard-driven, node-based app that combines markdown, mind maps, kanban, and checklists..."
+excerpt: "When existing note apps fall short, sometimes you have to build your own. Here's my vision for a keyboard driven, node based app that combines markdown, mind maps, kanban, and checklists..."
 draft: false
 ---
 ### What all other note apps are missing

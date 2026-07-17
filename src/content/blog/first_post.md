@@ -4,7 +4,7 @@ date: 2025-10-20T00:00:00Z
 excerpt: "A blog sharing practical insights on programming, keyboard optimization, learning systems, and AI workflows to help you work at the speed of thought. I'll be posting at least once every week..."
 draft: false
 ---
-Welcome! This is my first post - and a promise. I'll be publishing here at least once every week with small, useful snippets of knowledge.
+Welcome! This is my first post, and a promise. I'll be publishing here at least once every week with small, useful snippets of knowledge.
 
 What you’ll find:
 - Pillars: programming, keyboards/typing, learning systems, and AI.

@@ -5,7 +5,7 @@
 <div class="window" id="slash-demo">
   <div class="window__bar">
     <div class="window__dots"><span></span><span></span><span></span></div>
-    <div class="window__title">standup.md — no lag mind</div>
+    <div class="window__title">standup.md · no lag mind</div>
   </div>
   <div class="slash__page demo-page" id="slash-page"></div>
 </div>
@@ -97,10 +97,10 @@
 
     m.remove();
     l2.remove();
-    for (const line of ['yesterday — shipped the graph view', 'today — polish wikilink autocomplete', 'blockers — none']) {
+    for (const line of ['yesterday: shipped the graph view', 'today: polish wikilink autocomplete', 'blockers: none']) {
       const l = newLine('tmpl');
-      const [head, rest] = line.split(' — ');
-      l.innerHTML = `<span class="b">${head}</span> — ${rest}`;
+      const [head, rest] = line.split(': ');
+      l.innerHTML = `<span class="b">${head}</span>: ${rest}`;
       await sleep(120);
     }
     const tail = newLine();
@@ -112,9 +112,9 @@
     page.innerHTML = `
       <div class="l l-h2">Standup</div>
       <div class="l"><span class="b">${TODAY}</span></div>
-      <div class="l tmpl"><span class="b">yesterday</span> — shipped the graph view</div>
-      <div class="l tmpl"><span class="b">today</span> — polish wikilink autocomplete</div>
-      <div class="l tmpl"><span class="b">blockers</span> — none</div>`;
+      <div class="l tmpl"><span class="b">yesterday</span>: shipped the graph view</div>
+      <div class="l tmpl"><span class="b">today</span>: polish wikilink autocomplete</div>
+      <div class="l tmpl"><span class="b">blockers</span>: none</div>`;
   } else {
     runLoop(page, run);
   }

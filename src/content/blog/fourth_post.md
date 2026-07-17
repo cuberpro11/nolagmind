@@ -1,7 +1,7 @@
 ---
-title: "From Flat to Fast: The Science of Full‑Travel Keyboards Top Typists Rely On"
+title: "From Flat to Fast: The Science of Full Travel Keyboards Top Typists Rely On"
 date: 2025-10-23T00:00:00Z
-excerpt: "Why the world's fastest typists avoid low-profile keyboards and choose full-travel mechanical switches—the science behind typing at 300+ WPM..."
+excerpt: "Why the world's fastest typists avoid low profile keyboards and choose full travel mechanical switches. The science behind typing at 300+ WPM..."
 draft: false
 ---
 ### What keyboards can allow you to type at 300 wpm?

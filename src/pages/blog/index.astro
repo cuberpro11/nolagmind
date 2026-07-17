@@ -8,7 +8,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 );
 ---
 
-<Base title={`Blog — ${site.name}`} description="Notes on programming, keyboard optimization, learning systems, and building a note app.">
+<Base title={`Blog · ${site.name}`} description="Notes on programming, keyboard optimization, learning systems, and building a note app.">
   <section class="log section">
     <div class="container log__inner">
       <p class="tick-label" data-reveal>
@@ -18,7 +18,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
         Writing.
       </h1>
       <p class="log__sub" data-reveal style="--reveal-delay: 110ms">
-        Practical thoughts on programming, keyboard-driven workflows, and
+        Practical thoughts on programming, keyboard driven workflows, and
         building a note app from scratch.
       </p>
 
