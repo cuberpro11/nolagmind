@@ -10,7 +10,8 @@
     "2.1.0",
     "2.1.1",
     "2.1.2",
-    "2.1.3"
+    "2.1.3",
+    "2.1.4"
   ],
   "entries": {
     "0.1.9": {
@@ -67,6 +68,11 @@
       "version": "2.1.3",
       "title": "What's New in 2.1.3",
       "body": "- Mind map grow-down layout — top-down trees now use a dedicated layout with tighter sibling spacing and width caps, so cousin branches no longer overlap\n- Faster note switching — wikilink resolution and sidebar sorting no longer rescan the vault on every click or note change\n- Smoother startup — update checks wait until the app is idle and respect the check cooldown, so relaunching doesn't compete with vault loading"
+    },
+    "2.1.4": {
+      "version": "2.1.4",
+      "title": "What's New in 2.1.4",
+      "body": "- Board task detail panel — opening task details suspends board keyboard shortcuts and inline editing so the side panel keeps focus without fighting the board behind it\n- Board find — blocked task titles are excluded from search until their blockers are completed\n- Mind map editing — clicking a node to edit now places the caret where you clicked instead of snapping to the end, so wikilink navigation works right after a click"
     }
   }
 }
