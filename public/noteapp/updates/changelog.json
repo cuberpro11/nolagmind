@@ -8,7 +8,8 @@
     "0.2.4",
     "0.2.5",
     "2.1.0",
-    "2.1.1"
+    "2.1.1",
+    "2.1.2"
   ],
   "entries": {
     "0.1.9": {
@@ -55,6 +56,11 @@
       "version": "2.1.1",
       "title": "What's New in 2.1.1",
       "body": "- Developer theme colors — official palette colors for Gruvbox, Monokai Pro, One Dark, Tokyo Night, Ayu, Night Owl, Everforest, Kanagawa, Rosé Pine, and Horizon"
+    },
+    "2.1.2": {
+      "version": "2.1.2",
+      "title": "What's New in 2.1.2",
+      "body": "- Faster vault switching — revisiting a vault you already opened this session restores its note list instantly instead of rescanning disk\n- Smoother update checks — the app checks for updates immediately on launch, hiding the network round-trip behind normal startup work instead of flashing a prompt after the home screen loads"
     }
   }
 }
