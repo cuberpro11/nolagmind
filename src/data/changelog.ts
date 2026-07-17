@@ -8,6 +8,13 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.1.2',
+    highlights: [
+      'Faster vault switching: revisiting a vault you already opened this session restores its note list instantly',
+      'Smoother update checks: the app checks for updates immediately on launch instead of waiting for the home screen to finish loading',
+    ],
+  },
+  {
     version: '2.1.1',
     highlights: [
       'Developer theme colors: official palette colors for Gruvbox, Monokai Pro, One Dark, Tokyo Night, Ayu, Night Owl, Everforest, Kanagawa, Rosé Pine, and Horizon',
