@@ -8,6 +8,48 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.1.7',
+    highlights: [
+      'Welcome notes — advanced shortcuts walkthrough now documents autocomplete list actions (⌘Delete to remove custom properties or slash commands, ⌘Enter to edit a slash command)',
+    ],
+  },
+  {
+    version: '2.1.6',
+    highlights: [
+      'macOS — Option+letter shortcuts (⌥N, ⌥D, ⌥Z, ⌥[, ⌥1–9, etc.) no longer insert special characters or dead keys into the editor',
+      'macOS — Escape in native fullscreen no longer exits fullscreen when a modal or in-app handler should consume it',
+      'Wikilink autocomplete — typing [[ after an existing wikilink in the same paragraph is detected correctly',
+      'Slash commands — modal editor round-trips markdown the same way as note content (tasks, wikilinks, blank lines)',
+      'Slash commands — command names are sanitized as you type; Enter/Escape work in the delete confirmation dialog',
+      'Slash command insertion — expanded content uses the same TipTap markdown pipeline as note loading',
+      'Editor — opening or switching notes no longer adds spurious undo history steps from post-load normalization',
+    ],
+  },
+  {
+    version: '2.1.5',
+    highlights: [
+      'Onboarding walkthrough — welcome notes are reorganized into beginner, intermediate, and advanced stages with dedicated subfolders for each level',
+      'New vaults — welcome notes copy recursively so nested walkthrough folders come along automatically',
+      'First vault — the app now opens "Welcome (start here!)" as the landing note instead of the old welcome.md',
+    ],
+  },
+  {
+    version: '2.1.4',
+    highlights: [
+      'Board task detail panel — opening task details suspends board keyboard shortcuts and inline editing so the side panel keeps focus without fighting the board behind it',
+      'Board find — blocked task titles are excluded from search until their blockers are completed',
+      'Mind map editing — clicking a node to edit now places the caret where you clicked instead of snapping to the end, so wikilink navigation works right after a click',
+    ],
+  },
+  {
+    version: '2.1.3',
+    highlights: [
+      'Mind map grow-down layout — top-down trees now use a dedicated layout with tighter sibling spacing and width caps, so cousin branches no longer overlap',
+      'Faster note switching — wikilink resolution and sidebar sorting no longer rescan the vault on every click or note change',
+      'Smoother startup — update checks wait until the app is idle and respect the check cooldown, so relaunching does not compete with vault loading',
+    ],
+  },
+  {
     version: '2.1.2',
     highlights: [
       'Faster vault switching: revisiting a vault you already opened this session restores its note list instantly',
