@@ -12,7 +12,8 @@
     "2.1.2",
     "2.1.3",
     "2.1.4",
-    "2.1.5"
+    "2.1.5",
+    "2.1.6"
   ],
   "entries": {
     "0.1.9": {
@@ -79,6 +80,11 @@
       "version": "2.1.5",
       "title": "What's New in 2.1.5",
       "body": "- Onboarding walkthrough — welcome notes are reorganized into beginner, intermediate, and advanced stages with dedicated subfolders for each level\n- New vaults — welcome notes copy recursively so nested walkthrough folders come along automatically\n- First vault — the app now opens \"Welcome (start here!)\" as the landing note instead of the old welcome.md"
+    },
+    "2.1.6": {
+      "version": "2.1.6",
+      "title": "What's New in 2.1.6",
+      "body": "- macOS — Option+letter shortcuts (⌥N, ⌥D, ⌥Z, ⌥[, ⌥1–9, etc.) no longer insert special characters or dead keys into the editor\n- macOS — Escape in native fullscreen no longer exits fullscreen when a modal or in-app handler should consume it\n- Wikilink autocomplete — typing `[[` after an existing wikilink in the same paragraph is detected correctly\n- Slash commands — modal editor round-trips markdown the same way as note content (tasks, wikilinks, blank lines)\n- Slash commands — command names are sanitized as you type; Enter/Escape work in the delete confirmation dialog\n- Slash command insertion — expanded content uses the same TipTap markdown pipeline as note loading\n- Editor — opening or switching notes no longer adds spurious undo history steps from post-load normalization"
     }
   }
 }
