@@ -21,6 +21,7 @@ const { title = `${site.name} · ${site.tagline}`, description = site.descriptio
   Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, site.brandUrl).toString();
+const ogImageURL = new URL('/app-icon.png', site.brandUrl).toString();
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -54,14 +55,20 @@ const schemas = [organizationSchema, websiteSchema, ...pageSchemas];
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/app-icon.png" />
+    <meta property="og:image" content={ogImageURL} />
     <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
     <meta name="theme-color" content="#060609" />
 
     {schemas.map((schema) => (

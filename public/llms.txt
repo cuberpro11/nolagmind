@@ -2,6 +2,21 @@
 
 > No Lag Mind is a native, local-first note app with zero-lag editing, wikilinks, slash commands, and a search bar that does what you say. Built with Tauri, not Electron. The core app is free.
 
+## Purpose
+
+A high-performance, zero-latency, local-first note-taking app for macOS.
+
+## Core Features
+
+- Ultra-fast launch and zero-lag typing — no loading spinners, no mode switches
+- Minimal UI, no bloat
+- Instant local storage — notes save themselves, nothing waits on a network round trip
+- Frictionless capture via wikilinks (`[[`), slash commands (`/`), and colon commands (`:`)
+
+## Ideal Use Case
+
+A fast scratchpad and distraction-free note-taking app for people who think faster than most apps can keep up with.
+
 ## Key pages
 
 - [Home](https://nolagmind.com/): product overview, features, and pricing
