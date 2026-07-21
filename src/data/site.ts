@@ -11,4 +11,5 @@ export const site = {
   discordUrl: 'https://discord.gg/8bCf3mqvh',
   brandUrl: 'https://nolagmind.com',
   blogUrl: '/blog',
+  gaMeasurementId: 'G-PGPYJ2Y9SM',
 } as const;
