@@ -14,10 +14,36 @@ import { site } from '../data/site';
 interface Props {
   title?: string;
   description?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title = `${site.name} · ${site.tagline}`, description = site.description } =
+const { title = `${site.name} · ${site.tagline}`, description = site.description, structuredData } =
   Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, site.brandUrl).toString();
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  url: site.brandUrl,
+  logo: new URL('/app-icon.png', site.brandUrl).toString(),
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: site.brandUrl,
+};
+
+const pageSchemas = structuredData
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
+  : [];
+
+const schemas = [organizationSchema, websiteSchema, ...pageSchemas];
 ---
 
 <!doctype html>
@@ -27,6 +53,7 @@ const { title = `${site.name} · ${site.tagline}`, description = site.descriptio
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -36,6 +63,10 @@ const { title = `${site.name} · ${site.tagline}`, description = site.descriptio
     <meta property="og:image" content="/app-icon.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="theme-color" content="#060609" />
+
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+    ))}
 
     <!-- Paint the right theme before anything renders — same trick the app uses. -->
     <script is:inline>

@@ -4,14 +4,16 @@ import { getCollection, render } from 'astro:content';
 import { site } from '../../data/site';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map((post) => ({
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  return posts.map((post, i) => ({
     params: { slug: post.id },
-    props: { post },
+    props: { post, newerPost: posts[i - 1], olderPost: posts[i + 1] },
   }));
 }
 
-const { post } = Astro.props;
+const { post, newerPost, olderPost } = Astro.props;
 const { Content } = await render(post);
 
 function formatDate(d: Date) {
@@ -22,9 +24,36 @@ function formatDate(d: Date) {
     timeZone: 'UTC',
   });
 }
+
+const postURL = new URL(`/blog/${post.id}`, site.brandUrl).toString();
+
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.excerpt,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Organization', name: site.name },
+  publisher: { '@type': 'Organization', name: site.name },
+  mainEntityOfPage: postURL,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site.brandUrl },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: new URL('/blog', site.brandUrl).toString() },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: postURL },
+  ],
+};
 ---
 
-<Base title={`${post.data.title} · ${site.name}`} description={post.data.excerpt}>
+<Base
+  title={`${post.data.seoTitle ?? post.data.title} · ${site.name}`}
+  description={post.data.excerpt}
+  structuredData={[blogPostingSchema, breadcrumbSchema]}
+>
   <article class="post section">
     <div class="container post__inner">
       <p class="tick-label" data-reveal>
@@ -44,6 +73,23 @@ function formatDate(d: Date) {
       <p class="post__foot hairline-top">
         <a href="/blog">&larr; back to all posts</a>
       </p>
+
+      {(newerPost || olderPost) && (
+        <nav class="post__nav" aria-label="More posts">
+          {olderPost && (
+            <a href={`/blog/${olderPost.id}`} class="post__nav-link post__nav-link--prev">
+              <span class="post__nav-label">&larr; previous</span>
+              <span class="post__nav-title">{olderPost.data.title}</span>
+            </a>
+          )}
+          {newerPost && (
+            <a href={`/blog/${newerPost.id}`} class="post__nav-link post__nav-link--next">
+              <span class="post__nav-label">next &rarr;</span>
+              <span class="post__nav-title">{newerPost.data.title}</span>
+            </a>
+          )}
+        </nav>
+      )}
     </div>
   </article>
 </Base>
@@ -173,5 +219,51 @@ function formatDate(d: Date) {
 
   .post__foot a:hover {
     text-decoration: underline;
+  }
+
+  .post__nav {
+    margin-top: 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .post__nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .post__nav-link--next {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  .post__nav-label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .post__nav-title {
+    font-size: 0.94rem;
+    color: var(--accent-text);
+  }
+
+  .post__nav-link:hover .post__nav-title {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 560px) {
+    .post__nav {
+      grid-template-columns: 1fr;
+    }
+
+    .post__nav-link--next {
+      grid-column: 1;
+      text-align: left;
+    }
   }
 </style>

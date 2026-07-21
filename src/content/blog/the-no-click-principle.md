@@ -1,5 +1,6 @@
 ---
 title: "The No Click Principle: Why Your Mouse is Slowing You Down (and How to Fix It)"
+seoTitle: "The No Click Principle: Ditch Your Mouse"
 date: 2025-10-21T00:00:00Z
 excerpt: "Discover how reaching for your mouse breaks your flow state and costs you hours of productivity, and learn the apps and techniques that let you work entirely with your keyboard..."
 draft: false

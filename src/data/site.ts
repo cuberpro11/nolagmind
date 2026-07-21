@@ -11,5 +11,4 @@ export const site = {
   discordUrl: 'https://discord.gg/8bCf3mqvh',
   brandUrl: 'https://nolagmind.com',
   blogUrl: '/blog',
-  typemasterUrl: 'https://nolagmind.com/typemaster',
 } as const;

@@ -1,5 +1,6 @@
 ---
 title: "The Perfect AI Prompt Formula: How to Get Exactly What You Want Every Time"
+seoTitle: "The Perfect AI Prompt Formula"
 date: 2025-10-22T00:00:00Z
 excerpt: "Stop getting generic AI responses. Master the five part prompt formula that ensures you get exactly what you need, every single time..."
 draft: false

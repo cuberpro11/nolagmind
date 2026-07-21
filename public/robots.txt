@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nolagmind.com/sitemap-index.xml

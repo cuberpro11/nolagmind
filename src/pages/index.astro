@@ -14,9 +14,24 @@ import Pricing from '../components/Pricing.astro';
 import MakerNote from '../components/MakerNote.astro';
 import Faq from '../components/Faq.astro';
 import FinalCta from '../components/FinalCta.astro';
+import { site } from '../data/site';
+
+const softwareApplicationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: site.appName,
+  description: site.description,
+  applicationCategory: 'ProductivityApplication',
+  operatingSystem: 'macOS',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+};
 ---
 
-<Base>
+<Base structuredData={softwareApplicationSchema}>
   <Hero />
   <SpeedStrip />
 

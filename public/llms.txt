@@ -1,0 +1,21 @@
+# No Lag Mind
+
+> No Lag Mind is a native, local-first note app with zero-lag editing, wikilinks, slash commands, and a search bar that does what you say. Built with Tauri, not Electron. The core app is free.
+
+## Key pages
+
+- [Home](https://nolagmind.com/): product overview, features, and pricing
+- [Download](https://nolagmind.com/download): get the macOS (Apple Silicon) build
+- [Docs](https://nolagmind.com/docs): usage and feature documentation
+- [Changelog](https://nolagmind.com/changelog): release history
+- [Blog](https://nolagmind.com/blog): writing on programming, keyboard-driven workflows, and building a note app from scratch
+
+## Blog posts
+
+- [The No Click Principle](https://nolagmind.com/blog/the-no-click-principle)
+- [The Perfect AI Prompt Formula](https://nolagmind.com/blog/perfect-ai-prompt-formula)
+- [The Science of Full Travel Keyboards](https://nolagmind.com/blog/full-travel-keyboards-explained)
+- [Mastering Keyboard Shortcuts](https://nolagmind.com/blog/mastering-keyboard-shortcuts)
+- [My Vision for the Best Note Taking App](https://nolagmind.com/blog/my-vision-for-the-best-note-taking-app)
+- [Why You Have to Use a Tiling Window Manager](https://nolagmind.com/blog/why-use-a-tiling-window-manager)
+- [Unstoppable macOS Toolkit](https://nolagmind.com/blog/unstoppable-macos-productivity-toolkit)

@@ -34,3 +34,17 @@ What you can expect from my note app:
 My goal is to make a note app that is as fluid and simple to use, while still being able to do everything that you want it to do. Everything should be intuitively accessible to you and can be done with only the keyboard.
 
 The reason that I want to make everything a node, is because it will allow you to convert your bullet point list into a auto generated mind map just by typing one command. It will also make everything much easier to search and add or re-use in other notes.
+
+### Why speed has to come first
+
+Most note apps treat speed as an afterthought, something you optimize once the feature list is "done." I think that's backwards. The moment an app makes you wait, even for a fraction of a second, on typing, searching, or switching notes, you lose the thought you were trying to capture. That's the entire premise behind No Lag Mind: zero lag editing isn't a nice-to-have, it's the foundation everything else is built on. If the app can't keep up with your fingers, none of the other features matter.
+
+This is also why the app is built with Tauri instead of Electron. Native performance means the editor responds the instant you type, wikilinks resolve without a noticeable delay, and the search bar returns results as fast as you can read them. A note app is a tool you reach for dozens of times a day, so every millisecond of friction compounds into a real productivity cost over a week or a month.
+
+### Keyboard-first, not keyboard-only
+
+Being able to do everything with the keyboard doesn't mean the mouse is banned, it means you're never forced to use it. Slash commands, wikilinks, and a command palette-style search are all designed so your hands never have to leave the home row to create a note, link two ideas together, or jump to something you wrote last month. This lines up with a philosophy I keep coming back to in this blog: the fewer steps between having a thought and getting it down, the more useful the tool actually is.
+
+### Where this is headed
+
+Right now the app already covers fast markdown editing, wikilinks, and slash commands. Turning bullet lists into mind maps, adding kanban boards, and building out richer checklists are the next milestones on the roadmap. I'd rather ship a smaller set of features that feel instant than a large feature set that feels sluggish, so each of these will land once they meet the same zero-lag bar as the editor itself.
