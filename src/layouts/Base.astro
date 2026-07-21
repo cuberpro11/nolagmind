@@ -45,6 +45,9 @@ const pageSchemas = structuredData
   : [];
 
 const schemas = [organizationSchema, websiteSchema, ...pageSchemas];
+
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+const enableAnalytics = Boolean(gaId) && import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -52,6 +55,20 @@ const schemas = [organizationSchema, websiteSchema, ...pageSchemas];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {enableAnalytics && (
+      <>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} is:inline />
+        <script define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />

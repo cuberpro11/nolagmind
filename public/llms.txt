@@ -27,6 +27,7 @@ A fast scratchpad and distraction-free note-taking app for people who think fast
 
 ## Blog posts
 
+- [No Lag Mind vs. Obsidian](https://nolagmind.com/blog/no-lag-mind-vs-obsidian): a direct comparison covering speed, flexibility, and built-in features vs. Obsidian's plugin ecosystem
 - [The No Click Principle](https://nolagmind.com/blog/the-no-click-principle)
 - [The Perfect AI Prompt Formula](https://nolagmind.com/blog/perfect-ai-prompt-formula)
 - [The Science of Full Travel Keyboards](https://nolagmind.com/blog/full-travel-keyboards-explained)
