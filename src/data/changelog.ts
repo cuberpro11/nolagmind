@@ -8,6 +8,15 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.0.1',
+    highlights: [
+      'Updates — non-blocking corner banner replaces the modal; downloads run in the background and apply automatically when you quit (optional Restart Now)',
+      'Updates — startup update check always hits the network so available updates surface reliably on launch',
+      'Faster vault switching — no blank flash when changing vaults; property catalog is cached in memory for revisits',
+      'Faster startup — combined vault config IPC call, one-pass note property hydration, and legacy mind-map migration runs only once per vault',
+    ],
+  },
+  {
     version: '2.0.0',
     highlights: [
       'No Lag Mind Note App 2.0 — clean version numbering from 1.7.9 through 1.9.9',
