@@ -137,11 +137,4 @@ export const releases: Release[] = [
       'Bug fixes and performance improvements',
     ],
   },
-  {
-    version: '1.7.9',
-    highlights: [
-      'Local first vault storage with markdown, mind maps, and boards',
-      'Graph view, daily notes, keyboard shortcuts, and themes',
-    ],
-  },
 ];
