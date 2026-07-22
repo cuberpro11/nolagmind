@@ -17,7 +17,8 @@
     "1.9.7",
     "1.9.8",
     "1.9.9",
-    "2.0.0"
+    "2.0.0",
+    "2.0.1"
   ],
   "entries": {
     "1.7.9": {
@@ -109,6 +110,11 @@
       "version": "2.0.0",
       "title": "What's New in 2.0.0",
       "body": "- No Lag Mind Note App 2.0 — clean version numbering from 1.7.9 through 1.9.9\n- Removed experimental move-to-Applications first-launch prompt"
+    },
+    "2.0.1": {
+      "version": "2.0.1",
+      "title": "What's New in 2.0.1",
+      "body": "- Updates — non-blocking corner banner replaces the modal; downloads run in the background and apply automatically when you quit (optional Restart Now)\n- Updates — startup update check always hits the network so available updates surface reliably on launch\n- Faster vault switching — no blank flash when changing vaults; property catalog is cached in memory for revisits\n- Faster startup — combined vault config IPC call, one-pass note property hydration, and legacy mind-map migration runs only once per vault"
     }
   }
 }
