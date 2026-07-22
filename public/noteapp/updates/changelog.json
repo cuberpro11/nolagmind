@@ -14,7 +14,8 @@
     "2.1.4",
     "2.1.5",
     "2.1.6",
-    "2.1.7"
+    "2.1.7",
+    "2.1.8"
   ],
   "entries": {
     "0.1.9": {
@@ -91,6 +92,11 @@
       "version": "2.1.7",
       "title": "What's New in 2.1.7",
       "body": "- Welcome notes — advanced shortcuts walkthrough now documents autocomplete list actions (⌘Delete to remove custom properties or slash commands, ⌘Enter to edit a slash command)"
+    },
+    "2.1.8": {
+      "version": "2.1.8",
+      "title": "What's New in 2.1.8",
+      "body": "- macOS — first launch now offers to move the app from Downloads to your Applications folder (with App Translocation support and optional \"Don't ask again\")\n- Themes — Rosé Pine accent colors updated to match the official palette"
     }
   }
 }
