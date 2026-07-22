@@ -8,6 +8,12 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.1.9',
+    highlights: [
+      'Updates — startup update check now always hits the network so the update popup appears reliably on launch (Settings manual check was already correct)',
+    ],
+  },
+  {
     version: '2.1.8',
     highlights: [
       'macOS — first launch now offers to move the app from Downloads to your Applications folder (with App Translocation support and optional "Don\'t ask again")',
