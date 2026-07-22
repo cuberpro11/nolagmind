@@ -15,7 +15,8 @@
     "2.1.5",
     "2.1.6",
     "2.1.7",
-    "2.1.8"
+    "2.1.8",
+    "2.1.9"
   ],
   "entries": {
     "0.1.9": {
@@ -97,6 +98,11 @@
       "version": "2.1.8",
       "title": "What's New in 2.1.8",
       "body": "- macOS — first launch now offers to move the app from Downloads to your Applications folder (with App Translocation support and optional \"Don't ask again\")\n- Themes — Rosé Pine accent colors updated to match the official palette"
+    },
+    "2.1.9": {
+      "version": "2.1.9",
+      "title": "What's New in 2.1.9",
+      "body": "- Updates — startup update check now always hits the network so the update popup appears reliably on launch (Settings manual check was already correct)"
     }
   }
 }
