@@ -8,6 +8,13 @@ export interface Release {
 
 export const releases: Release[] = [
   {
+    version: '2.1.8',
+    highlights: [
+      'macOS — first launch now offers to move the app from Downloads to your Applications folder (with App Translocation support and optional "Don\'t ask again")',
+      'Themes — Rosé Pine accent colors updated to match the official palette',
+    ],
+  },
+  {
     version: '2.1.7',
     highlights: [
       'Welcome notes — advanced shortcuts walkthrough now documents autocomplete list actions (⌘Delete to remove custom properties or slash commands, ⌘Enter to edit a slash command)',
