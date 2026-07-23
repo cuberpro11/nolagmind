@@ -20,7 +20,8 @@
     "2.0.0",
     "2.0.1",
     "2.0.2",
-    "2.0.3"
+    "2.0.3",
+    "2.0.4"
   ],
   "entries": {
     "1.7.9": {
@@ -127,6 +128,11 @@
       "version": "2.0.3",
       "title": "What's New in 2.0.3",
       "body": "- Themes — Ferra Dark developer theme using the official Ferra palette\n- Themes — Ashen Dark developer theme using the official Ashen palette"
+    },
+    "2.0.4": {
+      "version": "2.0.4",
+      "title": "What's New in 2.0.4",
+      "body": "- Themes — Ashen Dark accent color now uses the official red palette instead of blue"
     }
   }
 }
