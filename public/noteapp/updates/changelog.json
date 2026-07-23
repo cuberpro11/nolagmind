@@ -22,7 +22,8 @@
     "2.0.2",
     "2.0.3",
     "2.0.4",
-    "2.0.5"
+    "2.0.5",
+    "2.0.6"
   ],
   "entries": {
     "1.7.9": {
@@ -139,6 +140,11 @@
       "version": "2.0.5",
       "title": "What's New in 2.0.5",
       "body": "- Names — notes, boards, and mind maps now share one name per folder; create, rename, and move show which kind already exists\n- Wikilinks — `[[` autocomplete can create mind maps (`/m`, `/mindmap`) or boards (`/b`, `/board`) with the right icon and label\n- Search — batch command uses Cmd+Enter (Ctrl+Enter on Windows) to finish selecting notes and choose Delete or Move; tag/sort/batch autocomplete anchors to the search input\n- Previews — image-only notes and image markdown in grep/backlink snippets show `[image]` instead of blank or raw syntax\n- Editor — empty leading list items survive markdown reload; pasting an image into an empty bullet aligns cleanly with the marker\n- macOS — window uses the hidden title bar style for a cleaner chrome"
+    },
+    "2.0.6": {
+      "version": "2.0.6",
+      "title": "What's New in 2.0.6",
+      "body": "- Images — inline images in paragraphs and bullet lists no longer leave ghost empty lines; Backspace at image boundaries no longer crashes; legacy block-image bullets normalize to one line\n- Grid & list — note previews load in one batch instead of one IPC call per card or row; offscreen cards and rows skip layout and paint for smoother scrolling\n- Backlinks — indexed with mtime validation instead of re-reading the whole vault on every open\n- Search — name scan and result DOM work are deferred so the modal stays responsive on large vaults\n- Editor — less redundant work on every keystroke in the typing hot path\n- Vault — property catalog hydrates incrementally from a persisted mtime map; batch reads and content search run in parallel on the backend"
     }
   }
 }
