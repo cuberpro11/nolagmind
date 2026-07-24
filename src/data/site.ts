@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Notes at the speed of thought',
   description:
     'No Lag Mind is a native, local first note app with zero lag editing, wikilinks, slash commands, and a search bar that does what you say. Built with Tauri, not Electron.',
-  version: '2.0.8',
+  version: '2.0.9',
   downloadUrl: 'https://nolagmind.com/downloads/Nolagmind_macOS.zip',
   downloadPlatform: 'macOS · Apple Silicon',
   discordUrl: 'https://discord.gg/8bCf3mqvh',
