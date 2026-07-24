@@ -1,11 +1,11 @@
 {
-  "version": "2.0.6",
-  "notes": "Version 2.0.6",
-  "pub_date": "2026-07-23T21:37:57.028Z",
+  "version": "2.0.7",
+  "notes": "Version 2.0.7",
+  "pub_date": "2026-07-24T01:20:12.348Z",
   "platforms": {
     "darwin-aarch64": {
-      "url": "https://nolagmind.com/noteapp/updates/No%20Lag%20Mind%20Note%20App.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUazVnSVFiSVJxZmpRWU1jdTR6Mk1NTlRtbG5odnc1Z0llc0xnaVNVUmZjeHo2d1dpcDUyaHd4andnZUM5TG9lbUdnTmRPRkdjOFdhU2RPM3gxK0E4cXFSNGxWRWpReVFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODQyNjc2CWZpbGU6Tm8gTGFnIE1pbmQgTm90ZSBBcHAuYXBwLnRhci5negppM0p1aG9LbXA4dU5zYnRMazN4dld2S0xLQ2x5YTE1NjRXTXpkVDZjeU5nVGNGWm1xR3d6SlJZamtBeFlIRjlEdVV5VFBIUGdPcXJlZWx4MVBvNWJBQT09Cg=="
+      "url": "https://nolagmind.com/noteapp/updates/NolagMind.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUazVnSVFiSVJxZnRBWFVzM010d0w0RDh2Y0pNNzdMVUd0UTBtTm5TTVIxQ2d0WkRuVklBN3FiTnFHaU5WOU81UmRjb0tFcS9iYW9EM2hneVNWZE1WazdyYWlWM3o0N2drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg0ODU2MDExCWZpbGU6Tm9sYWdNaW5kLmFwcC50YXIuZ3oKWHFJNUZVKzZlYUFJZ1FqWXVYMzBhMFJIOWw4NkRPSXVhTlQwdG9MZTNwQlRnZlJqQUJpOUJic2V1cjZDUHRFb0U2Z0ZkZFIrdm9uS3VnbG1vWSsyRGc9PQo="
     }
   }
 }
