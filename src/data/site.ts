@@ -1,11 +1,11 @@
 export const site = {
   name: 'No Lag Mind',
-  appName: 'NolagMind',
+  appName: 'Nolagmind',
   tagline: 'Notes at the speed of thought',
   description:
     'No Lag Mind is a native, local first note app with zero lag editing, wikilinks, slash commands, and a search bar that does what you say. Built with Tauri, not Electron.',
-  version: '2.0.7',
-  downloadUrl: 'https://nolagmind.com/downloads/NolagMind_macOS.zip',
+  version: '2.0.8',
+  downloadUrl: 'https://nolagmind.com/downloads/Nolagmind_macOS.zip',
   downloadPlatform: 'macOS · Apple Silicon',
   discordUrl: 'https://discord.gg/8bCf3mqvh',
   brandUrl: 'https://nolagmind.com',
