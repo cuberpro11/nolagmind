@@ -25,7 +25,8 @@
     "2.0.5",
     "2.0.6",
     "2.0.7",
-    "2.0.8"
+    "2.0.8",
+    "2.0.9"
   ],
   "entries": {
     "1.7.9": {
@@ -157,6 +158,11 @@
       "version": "2.0.8",
       "title": "What's New in 2.0.8",
       "body": "- App display name is now **Nolagmind** (single capital N, matching nolagmind.com)"
+    },
+    "2.0.9": {
+      "version": "2.0.9",
+      "title": "What's New in 2.0.9",
+      "body": "- Vault switching feels instant: the switcher closes right away and reloads the new vault in the background\n- Creating or opening a vault now switches into it immediately\n- Fixed vault switches leaking notes, previews, pins, and property catalogs from the previous vault\n- Deleting a large vault no longer freezes the UI\n- Faster vault switches when caches are clean (skip unnecessary localStorage writes)\n- Recent note cards load with one batched read instead of per-card fetches"
     }
   }
 }
